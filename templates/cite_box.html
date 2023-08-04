@@ -1,0 +1,114 @@
+<script>/*<![CDATA[*/function showCiteBox(doi, title) {
+  citationInfo['doi'] = doi;
+  citationInfo['title'] = title;
+  citationInfo['format'] = 'bibtex';
+
+  $('#citation-text').html('');
+  updateCiteBox();
+  $('#citation-modal').modal();
+  spinner.spin(document.getElementById('citation-text'));
+}
+
+function updateCiteBox() {
+  $('#citation-description').text(citationInfo['doi']);
+  $('#citation-modal-title').html('Citing &lsquo;' + citationInfo['title'] + '&rsquo;');
+
+  $('#cite-nav li').removeClass('active');
+  $('#' + citationInfo['format']).addClass('active');
+
+  var typesLookup = {
+    'bibtex': 'application/x-bibtex',
+    'ris': 'application/x-research-info-systems',
+    'apa': 'text/x-bibliography; style=apa',
+    'harvard': 'text/x-bibliography; style=harvard3',
+    'ieee': 'text/x-bibliography; style=ieee',
+    'mla': 'text/x-bibliography; style=mla',
+    'vancouver': 'text/x-bibliography; style=vancouver',
+    'chicago': 'text/x-bibliography; style=chicago-fullnote-bibliography'
+  };
+
+  var contentType = typesLookup[citationInfo['format']] || 'application/x-bibtex';
+
+  var url = 'https://api.crossref.org/v1/works/' + encodeURIComponent(citationInfo['doi']) + '/transform?mailto=crmds@crossref.org'
+
+  $.ajax({
+    url: url,
+    headers: {"Accept": contentType},
+    success: function(body) {
+      $('#citation-text').text(body);
+      spinner.stop();
+    }
+  });
+}
+
+function setCiteBoxFormat(format) {
+  citationInfo['format'] = format;
+  $('#citation-text').html('');
+  spinner.spin(document.getElementById('citation-text'));
+  updateCiteBox();
+}
+
+$(document).ready(function(e) {
+  citationInfo = {format: 'bibtex'};
+  spinnerOpts = {shadow: true, width: 2, speed: 2};
+  spinner = new Spinner(spinnerOpts);
+
+  $('#citation-modal-close').click(function(e) {
+    $('#citation-modal').modal('hide');
+  });
+
+  $('.cite-link').click(function(e) {
+    setCiteBoxFormat($(this).parent().attr('id'));
+    $('#cite-nav li').removeClass('active');
+    $(this).parent().addClass('active');
+  });
+});/*]]>*/</script>
+<style>/*<![CDATA[*/.modal pre {
+  font-size: 1.2em;
+  line-height: 1.4em;
+  margin-top: 1em;
+  max-height: 300px;
+  min-height: 100px;
+  overflow-y: scroll;
+}
+.modal {
+  width: 75%;
+  margin-left: -37.5%;
+}/*]]>*/</style>
+<div id="citation-modal" class="modal hide">
+  <div class="modal-header">
+    <a id="citation-modal-close" class="button close">&times;</a>
+    <h3>
+      <span id="citation-modal-title"></span>
+    </h3>
+  </div>
+  <div class="modal-body">
+    <ul id="cite-nav" class="nav nav-tabs">
+      <li id="bibtex" class="active citation-link">
+        <a class="cite-link" href="#"> BibTeX</a>
+      </li>
+      <li id="ris" class="citation-link">
+        <a class="cite-link" href="#"> RIS</a>
+      </li>
+      <li id="apa" class="citation-link">
+        <a class="cite-link" href="#"> APA</a>
+      </li>
+      <li id="harvard" class="citation-link">
+        <a class="cite-link" href="#"> Harvard</a>
+      </li>
+      <li id="ieee" class="citation-link">
+        <a class="cite-link" href="#"> IEEE</a>
+      </li>
+      <li id="mla" class="citation-link">
+        <a class="cite-link" href="#"> MLA</a>
+      </li>
+      <li id="vancouver" class="citation-link">
+        <a class="cite-link" href="#"> Vancouver</a>
+      </li>
+      <li id="chicago" class="citation-link">
+        <a class="cite-link" href="#"> Chicago</a>
+      </li>
+    </ul>
+    <pre id="citation-text"></pre>
+  </div>
+</div>

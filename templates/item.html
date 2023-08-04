@@ -1,0 +1,103 @@
+<tr>
+  <td class="item-data">
+    <p class="lead">
+      {{ item.title|safe }}
+    </p>
+    <p class="extra" style="margin-top: .5em;">
+      <span>
+
+        {% if item.test_doi %}
+          <b style="color: rgb(207, 121, 121);">
+          Example Item
+          </b>
+        {% else %}
+          <b>
+          {{ item.type }}
+          </b>
+        {% endif %}
+
+        published
+        <b>
+          {{ item.published_date }}
+        </b>
+      </span>
+      {% if item.publication %}
+        <span>
+          in
+          <b>
+            {{ item.publication }}
+          </b>
+        </span>
+      {% endif %}
+      {% if item.volume %}
+        <span>
+          volume
+          <b>
+            {{ item.volume }}
+          </b>
+        </span>
+      {% endif %}
+      {% if item.issue %}
+        <span>
+          issue
+          <b>
+            {{ item.issue }}
+          </b>
+        </span>
+      {% endif %}
+      {% if item.first_page and item.last_page %}
+        <span>
+          on pages
+          <b>
+            {{ item.first_page }}
+          </b>
+          to
+          <b>
+            {{ item.last_page }}
+          </b>
+        </span>
+      {% elif item.first_page %}
+        <span>
+          on page
+          <b>
+            {{ item.first_page }}
+          </b>
+        </span>
+      {% endif %}
+    </p>
+    {% if item.grant_info %}
+      <p class="extra">
+        <span>Research funded by</span>
+        <span>
+          {{ item.grant_info }}
+        </span>
+      </p>
+    {% endif %}
+    {% if item.authors %}
+      <p class="expand">
+        Authors: {{ item.authors }}
+      </p>
+    {% endif %}
+    {% if item.editors %}
+      <p class="expand">
+        Editors: {{ item.editors }}
+      </p>
+    {% endif %}
+    {% if item.chairs %}
+      <p class="expand">
+        Chairs: {{ item.chairs }} %>
+      </p>
+    {% endif %}
+    {% if item.translators %}
+      <p class="expand">
+        Translated: {{ item.translators }}
+      </p>
+    {% endif %}
+    {% if item.contributors %}
+      <p class="expand">
+        Contributors: {{ item.contributors }}" %>
+      </p>
+    {% endif %}
+    {% include 'item_links.html' %}
+  </td>
+</tr>

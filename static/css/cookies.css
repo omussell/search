@@ -1,0 +1,72 @@
+#cookie-bar {
+  z-index: 1000;
+  background: #ffc72c;
+  height: auto;
+  line-height: 36px;
+  color: #000;
+  text-align: center;
+  padding: 3px 0; }
+  #cookie-bar a {
+    color: #000;
+    text-decoration: underline; }
+    #cookie-bar a:hover {
+      color: #ef3340;
+      text-decoration: none; }
+
+#cookie-bar.fixed {
+  position: fixed;
+  bottom: 0;
+  left: 0;
+  width: 100%;
+  -webkit-transition-duration: 0.3s;
+  -moz-transition-duration: 0.3s;
+  -o-transition-duration: 0.3s;
+  transition-duration: 0.3s;
+  animation: slideOnLoad 1s 1;
+  -webkit-animation: slideOnLoad 1s 1; }
+
+#cookie-bar.fixed.bottom {
+  bottom: 0;
+  top: auto; }
+
+#cookie-bar p {
+  margin: 0;
+  padding: 0; }
+
+#cookie-bar .cb-enable {
+  background: #ef3340;
+  color: #ffffff;
+  display: inline-block;
+  border-radius: 3px;
+  text-decoration: none;
+  padding: 0 6px;
+  margin-left: 8px;
+  transition: background-color 0.1s linear; }
+
+#cookie-bar .cb-enable:hover {
+  background: #3eb1c8;
+  color: #ffffff; }
+
+#cookie-bar .cb-disable {
+  background: #ef3340; }
+
+#cookie-bar .cb-disable:hover {
+  background: #ef3340; }
+
+#cookie-bar .cb-policy {
+  background: #ef3340; }
+
+#cookie-bar .cb-policy:hover {
+  background: #ef3340; }
+
+@keyframes slideOnLoad {
+  0% {
+    bottom: -36px; }
+  100% {
+    bottom: 0px; } }
+
+@-webkit-keyframes slideOnLoad {
+  0% {
+    bottom: -36px; }
+  100% {
+    bottom: 0px; } }

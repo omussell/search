@@ -1,0 +1,3 @@
+
+class APIConnectionException(Exception):
+    pass

@@ -1,0 +1,24 @@
+{% extends "search.html" %}
+{% block search_content %}
+<div class="spacer" style="margin-top: 12em;"></div>
+<div class="row-centered">
+    <span style="font-size: 3em; line-height: 1em; color: #4f5858;">
+      Search the metadata
+      <br/>
+      of
+      journal articles, books, standards, datasets & more
+    </span>
+</div>
+<div class="spacer" style="margin-top: 3em;"></div>
+<div class="row-centered">
+    <form action="/search/works" id="search-form" method="GET">
+        <div class="search">
+            <input class="input input-xlarge search-input" id="search-input" name="q"
+                   placeholder="Title, author, DOI, ORCID iD, etc." type="text" value="">
+            <i class="icon-search"></i>
+            <input id="from-ui" name="from_ui" type="hidden" value="yes">
+            <a href="/help/works">Search help</a>
+        </div>
+    </form>
+</div>
+{% endblock %}

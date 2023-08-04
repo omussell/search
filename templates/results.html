@@ -1,0 +1,72 @@
+{% extends "layout/results_layout.html" %}
+{% block results_content %}
+<div class="row-fluid">
+  <div class="span3">
+    {% include 'facets.html' %}
+  </div>
+  <div class="span9">
+    {% with page=page %}
+      {% if page.name == 'works' %}
+        {% include 'include/works_search_header.html' %}
+      {% elif page.name == 'funders' %}
+        {% include 'include/funders_search_header.html' %}
+      {% endif %}
+    {% endwith %}
+    <div class="list-info">
+      {% if page.pagination.page > 10 %}
+        <table><tbody><tr>
+          <td class="item-data">
+            <p class="lead">
+              This search is limited to 10 pages only. For more data, go to the API
+            </p>
+            <div class="item-links-outer">
+              <div class="item-links">
+                <a href="https://api.crossref.org">
+                  https://api.crossref.org/
+                </a>
+              </div>
+            </div>
+          </td></tr></tbody></table>
+      {% else %}
+      <div class="pull-right">
+        <h6 class="number">
+          {% if page.pagination %}
+           Page {{ page.pagination.page }} of {{ page.total }} results
+          {% endif %}
+        </h6>
+      </div>
+      <span>
+        <h6>
+          Sort by:
+          {% if page.sort_type == 'year' %}
+            <a href="{{ page.sort_url }}&sort=score">relevance</a>
+            <b>publication year</b>
+          {% else %}
+            <b>relevance</b>
+            <a href="{{ page.sort_url }}&sort=year">publication year</a>
+          {% endif %}
+          {% if page.name == 'funders' and items %}
+            <span style="margin-left: 10em;">
+              <a href="/search/download_csv?id={{page.funder_id}}&format=csv">
+                <i class="icon-download-alt"></i>
+                Download as CSV
+              </a>
+            </span>
+          {% endif %}
+        </h6>
+      </span>
+      {% endif %}
+    </div>
+    {% include 'search_box.html' %}
+    {% include 'item_list.html' %}
+    <div class="item-paging bottom">
+      {{ page.pagination.links }}
+    </div>
+  </div>
+</div>
+{% include 'cite_box.html' %}
+{% endblock %}
+
+{% block javascripts %}
+<script src="{{ url_for('static', filename='js/results.js') }}" type="text/javascript"></script>
+{% endblock javascripts %}

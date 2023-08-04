@@ -1,0 +1,52 @@
+{% extends "layout/results_layout.html" %}
+{% block results_content %}
+<div class="row-fluid">
+  <div class="span2"></div>
+  <div class="span8">
+    {% include 'include/works_search_header.html' %}
+    <div class="page-header">
+      <h2>Link References</h2>
+    </div>
+    {% if not page.query_ok %}
+      <span class="lead">
+        Unable to match citations
+      </span>
+      <p>
+        {{ page.reason }}
+      </p>
+    {% else %}
+      <span class="lead">
+        Queried for {{page.results|length}} references
+      </span>
+      <table class="table table-striped" style="margin-top: 20px">
+        <tr>
+          <td colspan="2">Reference</td>
+        </tr>
+        {% for item in page.results %}
+          {% if item.match %}
+            <tr>
+              <td>
+                <br>
+                {{ item.text }}
+                </br>
+                <a href="{{ item.doi }}" target="_blank">
+                  {{ item.doi }}
+                </a>
+              </td>
+            </tr>
+          {% else %}
+            <tr class="error">
+              <td>
+                {{ item.text }}
+              </td>
+              <td>
+                {{ item.reason }}
+              </td>
+            </tr>
+          {% endif %}
+        {% endfor %}
+      </table>
+    {% endif %}
+  </div>
+</div>
+{% endblock %}

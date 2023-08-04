@@ -1,0 +1,214 @@
+  .item-paging {
+    text-align: center;
+    margin-top: 1em;
+  }
+  .list-info {
+     margin-bottom: 2em;
+     background-color: #f8f8f8;
+     padding: 1em;
+     margin-bottom: 1em;
+  }
+  .gap {
+    display: none;
+  }
+
+  .nav-list > .active > a {
+    background-color: rgb(56, 166, 203);
+  }
+
+  .nav-list > .active > a:hover {
+    background-color: rgb(6, 116, 153);
+  }
+
+  .footer {
+    margin-bottom: 10px;
+  }
+
+  h6 b, h6 a {
+    font-size: 1.2em;
+    line-height: 1.3em;
+    margin-left: 0.3em;
+  }
+
+  h6 b {
+    color: black;
+  }
+
+    .facets {
+      background-color: #f8f8f8;
+      padding: 1em;
+    }
+    .mini-page-header {
+      border-bottom-color: rgb(208, 208, 208);
+      border-bottom-style: solid;
+      border-bottom-width: 1px;
+    }
+    li {
+        margin: 0.1em 0em;
+    }
+    .funder {
+      margin-top: .3em;
+      margin-buttom: .3em;
+    }
+    .funder-level1 {
+      margin-top: .5em;
+      margin-bottom: .5em;
+      padding-top: .5em;
+      border-top-color: rgb(208, 208, 208);
+      border-top-style: solid;
+      border-top-width: 1px;
+    }
+    .funder-hl {
+      font-weight: bold;
+    }
+    .funder-header {
+      padding-bottom: 0.1em;
+      margin-bottom: 0.2em;
+      margin-top: 0.2em;
+    }
+    .funder-header h6 {
+      font-size: 1.1em;
+    }
+    .funder-header h6 a {
+      font-size: 1em;
+    }
+    .funder-expand {
+      padding: 0.2em;
+      font-size: 0.9em;
+      color: rgb(164, 164, 164);
+      font-weight: light;
+      margin-left: 0.4em;
+    }
+    .facet-spacer {
+      margin-bottom: 1em;
+    }
+
+    .facet-message {
+      font-weight: bold;
+      font-size: 1.0em;
+    }
+
+  .item-tab.conf-proc {
+    border-left: 4px solid rgb(49, 145, 177);
+  }
+  .item-data {
+    padding: 1em;
+  }
+  td {
+    vertical-align: top;
+    padding: .7em;
+  }
+  table {
+    border-collapse: collapse;
+    width: 100%;
+  }
+  table:first-child {
+    border-top: 1px solid #eee;
+  }
+  tr {
+    border-bottom: 1px solid #eee;
+    padding-bottom: 5em;
+  }
+  .item-data a {
+    margin-left: 0.2em;
+    margin-right: 0.2em;
+  }
+  .hl {
+    font-weight: bolder;
+  }
+  .extra {
+    color: #999;
+    font-size: 1.2em;
+    line-height: 1.3em;
+  }
+  .lead {
+    margin-bottom: .7em;
+  }
+  .oa-tooltip, .oa-tooltip:visited, .oa-tooltip:hover {
+    color: rgb(246, 130, 18);
+    text-decoration: none;
+  }
+  .claim-ok {
+    color: rgb(167, 204, 145);
+  }
+  .claim-ok:hover {
+    color: rgb(137, 194, 115);
+  }
+  .claim-warn {
+    color: rgb(246, 130, 18);
+  }
+  .claim-warn:hover {
+    color: rgb(216, 100, 0);
+  }
+  .claim-none {
+    color: #ccc;
+  }
+  .claim-none:hover {
+    color: rgb(167, 204, 145);
+  }
+  .item-links-outer {
+    margin-top: 1.5em;
+    position: relative;
+  }
+  .item-links {
+    position: absolute;
+    top: 50%;
+    height: 1.6em;
+    margin-top:-0.8em;
+  }
+  .item-links img {
+    margin-top: -0.33em;
+  }
+  .item-links a {
+    margin-right: 1.5em;
+  }
+  .item-data .extra span {
+    font-size: .9em;
+    line-height: 1.5em;
+  }
+  .label {
+    font-weight: normal;
+  }
+  .item-data .lead {
+    margin-bottom: .2em;
+    font-weight: 500;
+  }
+  .item-data .extra b {
+    font-size: 1.1em;
+  }
+  .modal-body p {
+    font-size: 1.3em;
+    line-height: 1.2em;
+  }
+  .well-transparent {
+    border: none;
+    text-transform: uppercase;
+    font-size: .9em;
+    padding: .8em;
+    cursor: pointer;
+    border-radius: 4px;
+    -moz-border-radius: 4px;
+    -webkit-border-radius: 4px;
+  }
+  .well-transparent i {
+    font-size: 1.2em;
+  }
+  .well-transparent:hover {
+    text-decoration: underline;
+  }
+  .btn-container button {
+    margin-left: .5em;
+    margin-top: 1em;
+  }
+  .btn-container {
+    text-align: right;
+  }
+  .btn-container button i {
+    margin-right: 0.4em;
+  }
+  .search-box {
+    padding: 0 .6em;
+  }
+  .search-info {
+    padding: .3em 0;
+  }

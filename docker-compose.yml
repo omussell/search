@@ -1,0 +1,16 @@
+version: '3.6'
+
+services:
+  crossref-search:
+    build: .
+    environment:
+      STAGE: test
+    ports:
+      - 5050:5000
+    volumes:
+      - ./config:/code/config
+      - ./logs:/code/logs
+    restart: always
+    network_mode: bridge
+    extra_hosts:
+      - "host.docker.internal:host-gateway"

@@ -1,0 +1,52 @@
+<style>/*<![CDATA[*/dl, dd, dt {
+  line-height: 1.6em;
+}
+dd {
+  margin-bottom: 0.4em;
+}/*]]>*/</style>
+<script>/*<![CDATA[*/$(document).ready(function() {
+  $('.example-link').click(function(e) {
+    var $searchInput = $('.search-input');
+    $searchInput.val($(this).text());
+    $searchInput.focus();
+    $('html, body').animate({scrollTop:0});
+  });
+});/*]]>*/</script>
+<dl class="lead">
+  <dt>
+    <a class="example-link" href='#'> Palmer ontologies publishing</a>
+  </dt>
+  <dd>Find your own works by searching for your name and something else, such as part of a title.</dd>
+  <dt>
+    <a class="example-link" href='#'> galaxy classification</a>
+  </dt>
+  <dd>Discover new articles by searching for query terms.</dd>
+  <dt>
+    <a class="example-link" href='#'> 10.2331/suisan.32.804</a>
+  </dt>
+  <dd>Find a particular work by searching for its DOI.</dd>
+  <dt>
+    <a class="example-link" href='#'> 10/ct8vzd</a>
+  </dt>
+  <dd>
+    Find a particular work by searching for its
+    <a href='http://shortdoi.org' target='_blank'> short DOI</a>
+.
+  </dd>
+  <dt>
+    <a class="example-link" href='#'> 0000-0001-5556-6616</a>
+  </dt>
+  <dd>Find works related to an ORCID.</dd>
+  <dt>
+    <a class="example-link" href='#'> 1740-8776</a>
+  </dt>
+  <dd>Find articles within a journal by searching for an ISSN.</dd>
+  <dt>
+    <a class="example-link" href='#'> RSG-09-276-01-CSM</a>
+  </dt>
+  <dd>Find works funded by a particular grant by searching for the grant / award number.</dd>
+  <dt>
+    <a class="example-link" href='#'> M. Henrion, D. J. Mortlock, D. J. Hand, and A. Gandy, "A Bayesian approach to star-galaxy classification," Monthly Notices of the Royal Astronomical Society, vol. 412, no. 4, pp. 2286-2302, Apr. 2011.</a>
+  </dt>
+  <dd>Find a particular work by searching for a full citation.</dd>
+</dl>

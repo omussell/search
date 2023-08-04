@@ -1,0 +1,49 @@
+<div class="item-links-outer">
+  <div class="item-links">
+    {% if item.citations %}
+      <a href="javascript:showCitationsBox('{{ item.hashed }}');">
+        <i class="icon-resize-small"></i>
+         {{ item.citations.count }}
+        citations from patents
+      </a>
+    {% endif %}
+    <a href="{{ item.display_doi }}">
+      <i class="icon-external-link"></i>
+      {{ item.display_doi }}
+    </a>
+    <span class="dropdown">
+      <a class="dropdown-toggle" data-toggle="dropdown" href="#" role="button">
+        <i class="icon-double-angle-down"></i>
+        Actions
+      </a>
+      <ul class="dropdown-menu" role="menu">
+        <li>
+          <a class="cite-link" href='javascript:showCiteBox("{{ item.doi }}", "{{ item.title }}");'>
+            <i class="icon-quote-left"></i>
+            Cite
+          </a>
+        </li>
+        {% if facet == 'publication' or item.publication %}
+          <li>
+            <a href="{{ page.publisher_url }}&publisher={{item.publication}}">
+              <i class="icon-filter"></i>
+              Filter on this publication
+            </a>
+          </li>
+        {% endif %}
+        <li>
+          <a href="{{page.api_url}}/{{ item.doi }}">
+            <i class="icon-file"></i>
+            Metadata as JSON
+          </a>
+        </li>
+      </ul>
+    </span>
+    {% if signed_in %}
+        <span class="well-transparent claim-ok" id="{{ item.doi }}"  style = "visibility:hidden">
+          <img src="{{ url_for('static', filename='img/orcid_16x16.gif') }}"/>
+          <span>In your profile</span>
+        </span>
+    {% endif %}
+  </div>
+</div>

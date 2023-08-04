@@ -1,0 +1,36 @@
+{% extends "search.html" %}
+{% block search_content %}
+<div class="row-fluid">
+  <div class="span2"></div>
+  <div class="span8">
+    {% include 'include/works_search_header.html' %}
+    <div class="page-header">
+      <h2>Link References</h2>
+    </div>
+    <div class="well well-large">
+      <span class="lead">
+        Match references to DOIs using Crossref Metadata Search fuzzy matching
+      </span>
+      <p style="margin-top: 15px; margin-bottom: 15px">
+        Paste references into the box below, making sure that
+        there is one reference on each line. You may copy and paste
+        the references section of an article but must adjust
+        the references to one-per-line. This tool does not understand
+        reference numbering.
+      </p>
+      <form method="POST">
+        <input type="hidden" name="csrf_token" value="{{ csrf_token() }}"/>
+        <textarea name="references" rows="30" style="width:100%; padding:0;"></textarea>
+        <div style="margin-bottom: 30px">
+          <div class="pull-right">
+            <button class="btn btn-success btn-large">
+              <i class="icon-search"></i>
+              Match to DOIs
+            </button>
+          </div>
+        </div>
+      </form>
+    </div>
+  </div>
+</div>
+{% endblock %}

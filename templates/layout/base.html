@@ -1,0 +1,70 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
+        "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html>
+<head>
+    <title>Crossref Metadata Search</title>
+
+    {% include 'include/css_links.html' %}
+    {% block styles %}{% endblock styles %}
+    {% include 'include/scripts.html' %}
+
+    <noscript><p><img src="https://crossref.matomo.cloud/matomo.php?idsite=17&rec=1" style="border:0;" alt=""/></p>
+    </noscript>
+</head>
+<body>
+<div class="notifications top-left"></div>
+<div class="container-fluid">
+    <div class="row-fluid">
+        {% block header %}
+        <div class="span-header span3" style="padding-top: 0.7em;">
+            <a class="home-link" href="/">
+                {% block header_image %}
+                <img src="//assets.crossref.org/logo/crossref-logo-landscape-200.png">
+                {% endblock %}
+            </a>
+        </div>
+        <div class="span-header span9">
+            <div class="pull-right">
+                {% include 'include/nav_links.html' %}
+            </div>
+        </div>
+        {% endblock %}
+    </div>
+    <div class="row-centered">
+        {% with messages = get_flashed_messages(with_categories=true) %}
+        {% if messages %}
+        <div class=flashes>
+            {% for category, message in messages %}
+            <div class="alert-{{ category }}">{{ message }}</div>
+            {% endfor %}
+        </div>
+        {% endif %}
+        {% endwith %}
+    </div>
+    <div id="content">{% block content %}{% endblock %}</div>
+    <div id="footer">
+        {% block footer %}
+        {% endblock %}
+    </div>
+</div>
+{% if expired_session %}
+<script>
+
+    $(document).ready(function () {
+        $('.top-left').notify({
+            message: {text: "You have been signed out of ORCID (sign-ins last for 1 hour)."},
+            type: 'warn',
+            fadeOut: {enabled: true, delay: 4000}
+        }).show();
+
+        $.ajax({
+            url: '/auth/signout',
+        });
+    });
+
+
+</script>
+{% endif %}
+{% block javascripts %}{% endblock javascripts %}
+</body>
+</html>

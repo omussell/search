@@ -1,0 +1,14 @@
+
+<div class="simple-nav-outer">
+    <div class="simple-nav smaller">
+        <div class="pull-right">
+            {% include 'profile_link.html' %}
+        </div>
+        <a href="/" class="{% if page and page.name == 'works' %}link-selected-fg{% endif %}">Metadata Search</a>
+        <a href="/search/funders" class="{% if page and page.name == 'funders' %}link-selected-fg{% endif %}">Funding Data</a>
+        <a href="/search/references" class="{% if page and page.name == 'references' %}link-selected-fg{% endif %}">Link References</a>
+        <a href="https://status.crossref.org/">Status</a>
+        <a href="https://api.crossref.org">API</a>
+        <a href="/help/works" class="{% if page and page.name == 'help' %}link-selected-fg{% endif %}">Help</a>
+    </div>
+</div>

@@ -1,0 +1,37 @@
+{% if page.search_type %}
+  <div class="alert search-box">
+    <div class="search-info">
+      {% if page.search_type == 'doi' %}
+        Showing DOI matching
+        <b>
+          {{ page.query }}
+        </b>
+      {% elif page.search_type == 'short_doi' %}
+        Resolved short DOI to
+        <b>
+          {{ page.query }}
+        </b>
+      {% elif page.search_type == 'issn' %}
+        Showing results for ISSN matching
+        <b>
+          {{ page.query }}
+        </b>
+      {% elif page.search_type == 'orcid' %}
+        Showing results for ORCID matching
+        <b>
+          {{ page.query }}
+        </b>
+      {% endif %}
+    </div>
+  </div>
+{% elif not items and page.name == 'funders' %}
+  <div class="alert alert-error search-box">
+    <div class="search-info">
+      <h4>No Records</h4>
+      There are no records with funding data for
+      <b>
+        {{ page.query }}
+      </b>
+    </div>
+  </div>
+{% endif %}

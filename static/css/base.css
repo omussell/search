@@ -1,0 +1,156 @@
+body { font-family: 'Inter', sans-serif; }
+@supports (font-variation-settings: normal) {
+  body { font-family: 'Inter var', sans-serif; }
+}
+
+a, a:visited {
+    color: rgb(56, 166, 203);
+}
+
+a:hover {
+    color: rgb(6, 116, 153);
+}
+
+.cr-red {
+    color: rgb(192, 70, 62);
+}
+
+.home-link, .home-link:visited, .home-link:hover {
+    text-decoration: none;
+    color: black;
+}
+
+.simple-nav {
+    font-size: 1.2em;
+    line-height: 1.1em;
+    margin-top: 1em;
+}
+
+.simple-nav a, .simple-nav a:visited {
+    color: grey;
+    padding-left: .4em;
+}
+
+.simple-nav a.link-selected-fg {
+    color: #a7aeb7;
+    font-size: 1.2em;
+}
+
+.search-in-header {
+    position: relative;
+    margin-top: .5em;
+    margin-right: 16em;
+    width: 22em;
+}
+
+.search-in-header i {
+    position: absolute;
+    top: 0.35em;
+    left: 0.5em;
+    font-size: 1.8em;
+    color: #aaa;
+}
+
+.search-in-header input {
+    line-height: 1.2em;
+    height: 1.4em;
+    font-size: 1.6em;
+    width: 22em;
+    padding-left: 2em;
+}
+
+.span-header {
+    margin-top: 0.5em;
+    margin-bottom: 0.5em;
+    height: 6em;
+}
+
+.simple-nav-outer {
+    position: relative;
+    width: 60em;
+}
+
+.simple-nav-bump-up {
+    margin-top: -1em;
+}
+
+.simple-nav {
+    position: absolute;
+    height: 2em;
+    top: 50%;
+    margin-top: 1em;
+    right: 0;
+}
+
+.simple-nav .pull-right {
+    margin-top: -0.05em;
+}
+
+.simple-nav .pull-right img {
+    margin-top: -0.2em;
+}
+
+.simple-nav > * {
+    margin-left: .4em;
+}
+
+.simple-nav.smaller {
+    font-size: 1em;
+    line-height: 2em;
+}
+
+.alert-error {
+    padding: 5px;
+    border-radius: 2px;
+    font-size: 1.1rem;
+    margin-bottom: 8px;
+    border: 1px solid red;
+    background-color: white;
+    color: red;
+}
+
+.alert-info {
+    padding: 5px;
+    border-radius: 2px;
+    font-size: 1.1rem;
+    margin-bottom: 8px;
+    border: 1px solid green;
+    background-color: white;
+    color: green;
+}
+
+.cookie-consent {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: .5rem .75rem;
+  position: fixed;
+  bottom: 0;
+  width: 100%;
+  z-index: 2001;
+  background-color: grey;
+  font-size: 1.1em;
+  color: #ffffff;
+}
+.cookie-consent  p a {
+    margin: 0;
+    line-height: 1;
+    color: #ffffff;
+}
+
+.cookie-consent .button {
+    display: block;
+    color: grey;
+    border: 1px solid;
+    border-color: #ffffff;
+    background: #ffffff;
+    padding: .34em;
+    margin-right: 1.5em;
+}
+
+.cookie-consent .button:hover {
+      color: white;
+      background: grey;
+      background: warm-black;
+      text-decoration: None;
+}

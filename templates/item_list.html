@@ -1,0 +1,16 @@
+<script>
+var dois_list = '{% for item in items %}{{ item.doi }},{% endfor %}'
+</script>
+<table>
+    {% for item in items %}
+    {% include 'item.html' %}
+    {% endfor %}
+</table>
+<script>
+
+  function showCitationsBox(hashed) {
+    $('#citations-' + hashed).modal();
+  }
+
+
+</script>

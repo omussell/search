@@ -1,0 +1,11 @@
+{% extends "layout/results_layout.html" %}
+{% block results_content %}
+<div class="row-fluid">
+  <div class="span2"></div>
+  <div class="span8">
+    {% include 'include/works_search_header.html' %}
+    <h2>Example Queries</h2>
+    {% include 'crmds_help_list.html' %}
+  </div>
+</div>
+{% endblock %}
