@@ -1,0 +1,70 @@
+build_amd64_image:
+  image: public.ecr.aws/crossref/cicada:latest
+  stage: build
+  tags:
+    - aws
+    - ec2
+    - amd64
+  services:
+    - docker:dind
+  script:
+    - build_image.sh amd64 "${CI_PROJECT_DIR}/Dockerfile.prod" search $CI_COMMIT_TAG $CI_PROJECT_DIR
+  only:
+    - tags
+
+build_arm64_image:
+  image: public.ecr.aws/crossref/cicada:latest
+  stage: build
+  tags:
+    - aws
+    - ec2
+    - arm64
+  services:
+    - docker:dind
+  script:
+    - build_image.sh arm64 "${CI_PROJECT_DIR}/Dockerfile.prod" search $CI_COMMIT_TAG $CI_PROJECT_DIR
+  only:
+    - tags
+
+multi_arch_manifest:
+  image: public.ecr.aws/crossref/cicada:latest
+  stage: build
+  tags:
+    - aws
+    - ec2
+    - amd64
+  services:
+    - docker:dind
+  needs: ['build_amd64_image', 'build_arm64_image']
+  script:
+    - create_manifest.sh search $CI_COMMIT_TAG
+  only:
+    - tags
+
+deploy_search_staging:
+  image: public.ecr.aws/crossref/cicada:latest
+  stage: deploy
+  tags:
+    - aws
+    - ec2
+    - amd64
+  variables:
+    AWS_DEFAULT_PROFILE: staging
+  script:
+    - deploy_container.sh cayenne-staging search-staging $CI_COMMIT_TAG
+  only:
+    - tags
+
+deploy_search_production:
+  image: public.ecr.aws/crossref/cicada:latest
+  stage: deploy
+  tags:
+    - aws
+    - ec2
+    - amd64
+  variables:
+    AWS_DEFAULT_PROFILE: production
+  script:
+    - deploy_container.sh cayenne-production search-production $CI_COMMIT_TAG
+  only:
+    - tags
