@@ -1,3 +1,7 @@
+variables:
+  MAINT_BRANCH_PATTERN: /^(([0-9]+)\.)?([0-9]+)\.x/
+  PREREL_BRANCH_PATTERN: /^([0-9]+)\.([0-9]+)\.([0-9]+)(?:-([0-9A-Za-z-]+(?:\.[0-9A-Za-z-]+)*))?(?:\+[0-9A-Za-z-]+)?$/
+
 stages:
   - release
   - build
@@ -12,6 +16,12 @@ release:
     - amd64
   script:
     - npx semantic-release
+  only:
+    refs:
+      - main
+      - alpha
+      - $MAINT_BRANCH_PATTERN
+      - $PREREL_BRANCH_PATTERN
 
 build_amd64_image:
   image: public.ecr.aws/crossref/cicada:latest
