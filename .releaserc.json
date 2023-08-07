@@ -1,4 +1,35 @@
 {
+  "plugins": [
+    "@semantic-release/commit-analyzer",
+    "@semantic-release/release-notes-generator",
+    [
+      "@semantic-release/exec",
+      {
+        "generateNotesCmd": "echo ${nextRelease.version} > VERSION.txt"
+      }
+    ],
+    [
+      "@semantic-release/changelog",
+      {
+        "changelogFile": "CHANGELOG.md"
+      }
+    ],
+    [
+      "@semantic-release/gitlab",
+      {
+        "assets": [
+          {
+            "path": "VERSION.txt",
+            "label": "App Version"
+          },
+          {
+            "path": "CHANGELOG.md",
+            "label": "Change Log"
+          }
+        ]
+      }
+    ]
+  ],
   "branches": [
     "main",
     "+([0-9])?(.{+([0-9]),x}).x"
