@@ -1,3 +1,18 @@
+stages:
+  - release
+  - build
+  - deploy
+
+release:
+  image: public.ecr.aws/crossref/cicada:latest
+  stage: release
+  tags:
+    - aws
+    - ec2
+    - amd64
+  script:
+    - npx semantic-release
+
 build_amd64_image:
   image: public.ecr.aws/crossref/cicada:latest
   stage: build
@@ -68,3 +83,4 @@ deploy_search_production:
     - deploy_container.sh cayenne-production search-production $CI_COMMIT_TAG
   only:
     - tags
+  when: manual
