@@ -45,11 +45,11 @@ UNKNOWN_ERROR = "Unknown error occurred "
 ORCID_REDIRECT_URL = "auth/orcid/callback?token="
 
 # Session Constants
-SESSION_ORCID = 'orcid'
-ORCID_INFO = 'orcid_info'
-ACCESS_TOKEN = 'access_token'
-USER_NAME = 'user_name'
-EXPIRES_AT = 'expires_at'
+SESSION_ORCID = "orcid"
+ORCID_INFO = "orcid_info"
+ACCESS_TOKEN = "access_token"
+USER_NAME = "user_name"
+EXPIRES_AT = "expires_at"
 
 # Messages
 ORCID_SESSION_EXPIRED = "You have been signed out of ORCID"
@@ -57,7 +57,7 @@ ORCID_SESSION_EXPIRED = "You have been signed out of ORCID"
 # Regex
 DOI = r"(?P<id>10\.\S+/\S+)$"
 DOI_REGEX = re.compile(DOI, re.IGNORECASE)
-ISSN = r'^\d{4}-\d{3}(\d|X|x){1}$'
+ISSN = r"^\d{4}-\d{3}(\d|X|x){1}$"
 ISSN_REGEX = re.compile(ISSN, re.IGNORECASE)
 ORCID = r"^[0-9]{4}-[0-9]{4}-[0-9]{4}-\d{3}[\dX]$"
 ORCID_REGEX = re.compile(ORCID)
