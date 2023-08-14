@@ -4,6 +4,7 @@ import os
 from flask import Flask, flash, render_template
 from flask_cors import CORS
 from flask_wtf.csrf import CSRFProtect
+from werkzeug.middleware.proxy_fix import ProxyFix
 
 import settings
 from core import constants, utils
@@ -11,6 +12,11 @@ from core.route import blueprints
 
 # Create APP
 app = Flask(__name__)
+
+# Apply the ProxyFix middleware
+# Here, x_for=1 means we trust one reverse proxy (one hop)
+app.wsgi_app = ProxyFix(app.wsgi_app, x_for=1, x_proto=1, x_host=1)
+
 csrf = CSRFProtect(app)
 
 app.config["CORS_HEADERS"] = "Content-Type"
