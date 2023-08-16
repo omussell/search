@@ -84,24 +84,28 @@ def extract_orcid_dois(account_info):
         raise exceptions.APIConnectionException(e)
 
     if response.status_code == 200:
-        res_json = response.json()
+        try:
+            res_json = response.json()
 
-        if "group" in res_json:
-            works = res_json["group"]
+            if "group" in res_json:
+                works = res_json["group"]
 
-            for work_loc in works:
-                if "external-ids" in work_loc:
-                    if "external-id" in work_loc["external-ids"]:
-                        ids_loc = work_loc["external-ids"]["external-id"]
-                        for id_loc in ids_loc:
-                            id_type = id_loc["external-id-type"]
-                            id_val = id_loc["external-id-value"]
+                for work_loc in works:
+                    if "external-ids" in work_loc:
+                        if "external-id" in work_loc["external-ids"]:
+                            ids_loc = work_loc["external-ids"]["external-id"]
+                            for id_loc in ids_loc:
+                                id_type = id_loc["external-id-type"]
+                                id_val = id_loc["external-id-value"]
 
-                            if id_type.upper() == "DOI":
-                                extracted_dois.append(id_val.casefold())
-    else:
-        logging.error("API returns error. Status Code : " + str(response.status_code) + " - Message : " +
-                     response.text)
+                                if id_type.upper() == "DOI":
+                                    extracted_dois.append(id_val.casefold())
+            else:
+                logging.error("API returns error. Status Code : " + str(response.status_code) + " - Message : " +
+                        response.text)
+        except Exception as e:
+            logging.exception(e)
+            logging.error(response.__dict__)
 
     return extracted_dois
 
