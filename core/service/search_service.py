@@ -317,6 +317,30 @@ def search_query(category, request):
             page["funder_id"] = request.args["id"]
 
         return items, page
+    
+    # Handle a search for a single DOI-like string that comes back as not found
+    # Display the results page, but with no results
+    elif res.status_code == 404 and search_type == constants.SEARCH_TYPE_DOI:
+        items = []
+        total = 0
+        page_number = request.args.get(get_page_parameter(), type=int, default=1)
+        max_results_to_display = constants.ROWS_PER_PAGE * 10
+
+        total_rows = total
+
+        # set pagination max to 11 pages
+        pagination = Pagination(page=page_number, total=total_rows, search=False, per_page=constants.ROWS_PER_PAGE,
+                                href=get_pagination_url(request))
+        page = {"pagination": pagination,
+                "sort_url": get_request_url(request, ["sort"]),
+                "publisher_url": get_request_url(request, ["publisher"]),
+                "sort_type": sort_type(request),
+                "api_url": constants.WORKS_API_URL,
+                "query": get_query_string(request, category),
+                "search_type": search_type,
+                }
+
+        return items, page
 
     else:
         logging.error("Error while getting the results: Response Code: " + str(res.status_code) + " Description: "
