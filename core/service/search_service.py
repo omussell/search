@@ -50,7 +50,7 @@ def get_api_url(category, request):
                 url = constants.BASE_API_URL + "works?filter=orcid:{" + query + "}"
                 search_type = constants.SEARCH_TYPE_ORCID
             else:
-                url = constants.WORKS_API_URL + "?query=" + query
+                url = constants.WORKS_API_URL + "?query.bibliographic=" + query
                 params["sort"] = sort_by
                 params["rows"] = str(rows)
 
