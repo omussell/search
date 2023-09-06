@@ -19,7 +19,6 @@ unit_test:
   artifacts:
     paths:
       - results.xml
-      - VERSION.txt
     reports:
       junit:
         - results.xml
