@@ -14,3 +14,17 @@ ORCID_AUTHORIZE_URL = os.environ.get("ORCID_AUTHORIZE_URL", "https://orcid.org/o
 ORCID_TOKEN_URL = os.environ.get("ORCID_TOKEN_URL", "https://api.orcid.org/oauth/token")
 ORCID_MEMBER_URL = os.environ.get("ORCID_MEMBER_URL", "https://api.orcid.org/v3.0/")
 
+try:
+    from version import __version__ as APP_VERSION
+except ImportError:
+    APP_VERSION = "unknown"
+
+print(f"APP_VERSION is set to {APP_VERSION}")
+
+API_MAILTO = os.environ.get("API_MAILTO", "search@crossref.org")
+API_USER_AGENT_NAME = os.environ.get("API_USER_AGENT_NAME", "CrossrefSearch")
+API_USER_AGENT = f"{API_USER_AGENT_NAME}/{APP_VERSION}; mailto:{API_MAILTO}"
+API_HEADERS = {"User-Agent": API_USER_AGENT}
+
+print(f"API_USER_AGENT is set to {API_USER_AGENT}")
+

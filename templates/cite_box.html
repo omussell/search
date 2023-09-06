@@ -29,7 +29,9 @@ function updateCiteBox() {
 
   var contentType = typesLookup[citationInfo['format']] || 'application/x-bibtex';
 
-  var url = 'https://api.crossref.org/v1/works/' + encodeURIComponent(citationInfo['doi']) + '/transform?mailto=crmds@crossref.org'
+  var apiMailto = "{{ API_MAILTO }}"
+
+  var url = 'https://api.crossref.org/v1/works/' + encodeURIComponent(citationInfo['doi']) + '/transform?mailto=' + apiMailto
 
   $.ajax({
     url: url,

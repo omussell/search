@@ -4,6 +4,7 @@ from flask import Blueprint, Response, flash, render_template, request
 
 import core.service.search_service as service
 from core import constants, exceptions
+from settings import API_MAILTO
 
 search = Blueprint("search", __name__)
 
@@ -20,7 +21,7 @@ def works():
         try:
             items, page = service.search_query(constants.CATEGORY_WORKS, request)
             page["name"] = constants.CATEGORY_WORKS
-            return render_template("results.html", items=items, page=page)
+            return render_template("results.html", items=items, page=page, API_MAILTO=API_MAILTO)
         except exceptions.APIConnectionException as e:
             logger.exception(e)
             flash(constants.API_REQUEST_ERROR, constants.MESSAGE_TYPE_ERROR)
@@ -43,7 +44,7 @@ def funders():
         elif request.args and "id" in request.args:
             items, page = service.search_query(constants.CATEGORY_FUNDERS, request)
             page["name"] = constants.CATEGORY_FUNDERS
-            return render_template("results.html", items=items, page=page)
+            return render_template("results.html", items=items, page=page, API_MAILTO=API_MAILTO)
 
     except exceptions.APIConnectionException as e:
         logger.exception(e)

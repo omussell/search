@@ -8,7 +8,7 @@ import requests
 from flask_paginate import Pagination, get_page_parameter
 
 from core import constants, exceptions, utils
-
+from settings import API_HEADERS
 
 def sort_type(request):
     sort_by = "relevance"
@@ -264,7 +264,7 @@ def get_query_string(request, category):
             return request.args["q"]
 
     elif category == constants.CATEGORY_FUNDERS and "id" in request.args:
-        res = requests.get(constants.FUNDER_INFO_API_URL.format(request.args["id"]),
+        res = requests.get(constants.FUNDER_INFO_API_URL.format(request.args["id"]), headers=API_HEADERS,
                            timeout=constants.REQUEST_TIME_OUT)
         res = res.json()
         if "message" in res and "name" in res["message"]:
@@ -276,7 +276,7 @@ def search_query(category, request):
     url, search_type = get_api_url(category, request)
     try:
         logging.debug("Search URL : " + str(url))
-        res = requests.get(url, timeout=constants.REQUEST_TIME_OUT)
+        res = requests.get(url, headers=API_HEADERS, timeout=constants.REQUEST_TIME_OUT)
         logging.debug("Response Code : " + str(res.status_code))
     except Exception as e:
         raise exceptions.APIConnectionException(e)
@@ -367,7 +367,7 @@ def resolve_references(citation_texts):
             else:
                 url = constants.WORKS_API_URL
                 url = furl.furl(url).add(args={"query": citation_text, "rows": 1}).url
-                res = requests.get(url, timeout=constants.REQUEST_TIME_OUT)
+                res = requests.get(url, headers=API_HEADERS, timeout=constants.REQUEST_TIME_OUT)
                 if res.status_code == 200:
                     res = res.json()
                     if "message" in res and "items" in res["message"]:
@@ -409,7 +409,7 @@ def all_funders_data(category, request):
     while page <= total_pages:
         url, search_type = get_api_url(category, request)
         try:
-            res = requests.get(url, timeout=constants.REQUEST_TIME_OUT)
+            res = requests.get(url, headers=API_HEADERS, timeout=constants.REQUEST_TIME_OUT)
         except Exception as e:
             raise exceptions.APIConnectionException(e)
 
