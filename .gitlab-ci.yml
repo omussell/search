@@ -38,6 +38,9 @@ release:
       - alpha
       - $MAINT_BRANCH_PATTERN
       - $PREREL_BRANCH_PATTERN
+  artifacts:
+    paths:
+      - VERSION.txt
 
 build_amd64_image:
   image: public.ecr.aws/crossref/cicada:latest
