@@ -6,7 +6,5 @@ COPY requirements.txt /app
 RUN pip3 install --no-cache-dir -r requirements.txt
 
 COPY . /app
-RUN echo 'version.py is:'
-RUN cat /app/version.py
 
 CMD [ "gunicorn", "--bind", "0.0.0.0:8000", "app:app" ]
