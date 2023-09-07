@@ -1,4 +1,5 @@
 import os
+import logging as logger
 
 SECRET_KEY = os.environ.get("SECRET_KEY")
 
@@ -20,6 +21,7 @@ except ImportError:
     APP_VERSION = "unknown"
 
 print(f"APP_VERSION is set to {APP_VERSION}")
+logger.error(f"APP_VERSION is set to {APP_VERSION}")
 
 API_MAILTO = os.environ.get("API_MAILTO", "search@crossref.org")
 API_USER_AGENT_NAME = os.environ.get("API_USER_AGENT_NAME", "CrossrefSearch")
@@ -27,4 +29,4 @@ API_USER_AGENT = f"{API_USER_AGENT_NAME}/{APP_VERSION}; mailto:{API_MAILTO}"
 API_HEADERS = {"User-Agent": API_USER_AGENT}
 
 print(f"API_USER_AGENT is set to {API_USER_AGENT}")
-
+logger.error(f"API_USER_AGENT is set to {API_USER_AGENT}")
