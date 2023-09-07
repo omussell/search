@@ -15,7 +15,7 @@ ORCID_TOKEN_URL = os.environ.get("ORCID_TOKEN_URL", "https://api.orcid.org/oauth
 ORCID_MEMBER_URL = os.environ.get("ORCID_MEMBER_URL", "https://api.orcid.org/v3.0/")
 
 try:
-    from version import __version__ as APP_VERSION
+    from version import version as APP_VERSION
 except ImportError:
     APP_VERSION = "unknown"
 
