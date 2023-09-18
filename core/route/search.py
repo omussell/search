@@ -14,6 +14,7 @@ help = Blueprint("help", __name__)
 
 
 @search.route("/works")
+@home.route("/")
 def works():
     if request.args and "from_ui" not in request.args:
         return index()
@@ -82,13 +83,6 @@ def references():
         except Exception as e:
             logger.exception(e)
             flash(constants.UNKNOWN_ERROR, constants.MESSAGE_TYPE_ERROR)
-
-
-@home.route("/")
-def index():
-    page = {"name": constants.CATEGORY_WORKS}
-    return render_template("splash.html", page=page)
-
 
 @help.route("/works")
 def works_help():
