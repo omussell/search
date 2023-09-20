@@ -34,6 +34,7 @@ def works():
     return render_template("splash.html", page=page)
 
 
+@home.route("/funding")
 @search.route("/funders")
 def funders():
     try:
