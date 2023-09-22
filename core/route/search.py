@@ -12,12 +12,11 @@ home = Blueprint("", __name__)
 
 help = Blueprint("help", __name__)
 
-
-@search.route("/works")
 @home.route("/")
+@search.route("/works")
 def works():
     if request.args and "from_ui" not in request.args:
-        return index()
+        return splash()
     if request.args and "q" in request.args:
         try:
             items, page = service.search_query(constants.CATEGORY_WORKS, request)
@@ -33,13 +32,12 @@ def works():
     page = {"name": constants.CATEGORY_WORKS}
     return render_template("splash.html", page=page)
 
-
 @home.route("/funding")
 @search.route("/funders")
 def funders():
     try:
         if request.args and "from_ui" not in request.args:
-            return index()
+            return splash()
         if request.args and "q" in request.args:
             return service.search_query(constants.CATEGORY_FUNDERS, request)
 
@@ -89,3 +87,7 @@ def references():
 def works_help():
     page = {"name": constants.CATEGORY_HELP}
     return render_template("search_help.html", page=page)
+
+def splash():
+    page = {"name": constants.CATEGORY_WORKS}
+    return render_template("splash.html", page=page)
