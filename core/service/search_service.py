@@ -6,6 +6,7 @@ import logging
 import furl
 import requests
 from flask_paginate import Pagination, get_page_parameter
+from urllib.parse import quote
 
 from core import constants, exceptions, utils
 from settings import API_HEADERS
@@ -38,7 +39,7 @@ def get_api_url(category, request):
 
     if category == constants.CATEGORY_WORKS:
         if "q" in request.args:
-            query = request.args["q"].strip()
+            query = quote(request.args["q"].strip())
 
             if constants.DOI_REGEX.match(query):
                 url = constants.WORKS_API_URL + "/" + query
@@ -56,7 +57,8 @@ def get_api_url(category, request):
 
     elif category == constants.CATEGORY_FUNDERS:
         if "q" in request.args:
-            url = constants.FUNDERS_API_URL + "?query=" + request.args["q"]
+            encoded_q = quote(request.args["q"].strip())
+            url = constants.FUNDERS_API_URL + "?query=" + encoded_q
         elif "id" in request.args:
             url = constants.FUNDER_WORKS_API_URL.format(request.args["id"])
             params["sort"] = sort_by
@@ -68,7 +70,7 @@ def get_api_url(category, request):
         params["offset"] = str(offset)
 
     if "publisher" in request.args:
-        params["query.container-title"] = request.args["publisher"]
+        params["query.container-title"] = quote(request.args["publisher"])
 
     return furl.furl(url).add(params), search_type
 
