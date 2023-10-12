@@ -1,7 +1,7 @@
 import logging.handlers
 import os
 
-from flask import Flask, flash, render_template
+from flask import Flask, flash, render_template, request
 from flask_cors import CORS
 from flask_wtf.csrf import CSRFProtect
 from werkzeug.middleware.proxy_fix import ProxyFix
@@ -51,27 +51,29 @@ logging.getLogger("werkzeug").setLevel(logging.ERROR)
 logging.getLogger("requests").setLevel(logging.ERROR)
 formatter = logging.Formatter("[%(asctime)s] p%(process)s {%(pathname)s:%(lineno)d} %(levelname)s - %(message)s","%m-%d %H:%M:%S")
 
-
 @app.errorhandler(400)
 def error_400(e):
+    app.logger.error(f"400 error occurred. Requested URL: {request.url}")
     app.logger.error(e)
     return render_template("400.html"), 400
 
 
 @app.errorhandler(401)
 def error_401(e):
+    app.logger.error(f"401 error occurred. Requested URL: {request.url}")
     app.logger.error(e)
     return render_template("401.html"), 401
 
 
 @app.errorhandler(404)
 def error_404(e):
-    app.logger.error(e)
+    app.logger.error(f"404 error occurred. Requested URL: {request.url}")
     return render_template("404.html"), 404
 
 
 @app.errorhandler(500)
 def error_500(e):
+    app.logger.error(f"500 error occurred. Requested URL: {request.url}")
     return render_template("500.html"), 500
 
 
