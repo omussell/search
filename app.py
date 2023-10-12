@@ -53,12 +53,14 @@ formatter = logging.Formatter("[%(asctime)s] p%(process)s {%(pathname)s:%(lineno
 
 @app.errorhandler(400)
 def error_400(e):
+    app.logger.error(f"400 error occurred. Requested URL: {request.url}")
     app.logger.error(e)
     return render_template("400.html"), 400
 
 
 @app.errorhandler(401)
 def error_401(e):
+    app.logger.error(f"401 error occurred. Requested URL: {request.url}")
     app.logger.error(e)
     return render_template("401.html"), 401
 
@@ -71,6 +73,7 @@ def error_404(e):
 
 @app.errorhandler(500)
 def error_500(e):
+    app.logger.error(f"500 error occurred. Requested URL: {request.url}")
     return render_template("500.html"), 500
 
 
