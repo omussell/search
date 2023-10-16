@@ -209,9 +209,11 @@ def add_location(item, row):
 
 
 def add_title(item, row):
-    if "title" in item:
-        row["title"] = item["title"][0].replace("\\", "") if "title" in item else ""
-
+    if "title" in item and item["title"]:
+        row["title"] = item["title"][0].replace("\\", "")
+    else:
+        row["title"] = ""
+        
 
 def add_name(item, row):
     if "name" in item:
