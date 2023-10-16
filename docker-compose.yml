@@ -5,11 +5,12 @@ services:
     build: .
     environment:
       STAGE: test
+    env_file:
+      - ./config/.env
     expose:
       - "5000"
     volumes:
-      - ./config:/code/config
-      - ./logs:/code/logs
+      - ./:/code
     restart: always
     extra_hosts:
       - "host.docker.internal:host-gateway"
