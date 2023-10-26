@@ -31,6 +31,7 @@ def orcid_callback():
     """Callback for orcid signin.
     :return:
     """
+    utils.set_host_url(request.host_url)
     if "code" in request.args:
         headers = {
             "Accept": "application/json",
