@@ -12,7 +12,6 @@ from core.service import auth_service
 auth = Blueprint("auth", __name__)
 orcid = Blueprint("orcid", __name__)
 
-
 @auth.route("/orcid")
 def orcid_redirect():
     """Signin to orcid. Redirects to orcid site.
@@ -41,6 +40,8 @@ def orcid_callback():
         redirect_uri = utils.get_host_url() + constants.ORCID_REDIRECT_URL + request.args["token"] + \
                "&code=" + request.args["code"]
         
+        # Safely fetch token or set to an empty string if not found
+        token = request.args.get("token", "")
         data = "client_id=" + utils.get_app_config("ORCID_CLIENT_ID") + \
                "&client_secret=" + utils.get_app_config("ORCID_CLIENT_SECRET") + \
                "&grant_type=authorization_code&" \
