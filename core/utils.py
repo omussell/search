@@ -1,6 +1,6 @@
 import time
 
-from flask import session
+from flask import session, request
 from datetime import datetime
 
 
@@ -67,6 +67,18 @@ def set_host_url(host_url):
 
 def get_host_url():
     return HOST_URL
+
+def get_request_data():
+    if request.is_json:
+        return request.json
+    elif request.data:
+        return f"Raw data: {request.data.decode('utf-8')}"
+    elif request.form:
+        return f"Form data: {request.form}"
+    elif request.args:
+        return f"Query parameters: {request.args}"
+    else:
+        return "No data in request"
 
 
 class DOIRecordParser:

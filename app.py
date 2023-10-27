@@ -9,6 +9,7 @@ from werkzeug.middleware.proxy_fix import ProxyFix
 import settings
 from core import constants, utils
 from core.route import blueprints
+from core.utils import get_request_data
 
 # Create APP
 app = Flask(__name__)
@@ -53,7 +54,7 @@ formatter = logging.Formatter("[%(asctime)s] p%(process)s {%(pathname)s:%(lineno
 
 @app.errorhandler(400)
 def error_400(e):
-    app.logger.error(f"400 error occurred. Requested URL: {request.url}")
+    app.logger.error(f"400 error occurred. Requested URL: {request.url} Request data: {get_request_data()}")
     app.logger.error(e)
     return render_template("400.html"), 400
 
@@ -73,7 +74,7 @@ def error_404(e):
 
 @app.errorhandler(500)
 def error_500(e):
-    app.logger.error(f"500 error occurred. Requested URL: {request.url}")
+    app.logger.error(f"500 error occurred. Requested URL: {request.url} Request data: {get_request_data()}")
     return render_template("500.html"), 500
 
 
