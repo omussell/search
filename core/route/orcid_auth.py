@@ -42,7 +42,7 @@ def orcid_callback():
     
         data = "client_id=" + utils.get_app_config("ORCID_CLIENT_ID") + \
                "&client_secret=" + utils.get_app_config("ORCID_CLIENT_SECRET") + \
-               "&grant_type=authorization_code&" \
+               "&grant_type=authorization_code" \
                "&redirect_uri=" + redirect_uri + \
                "&code=" + request.args["code"]
 
