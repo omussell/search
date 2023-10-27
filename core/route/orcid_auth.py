@@ -38,11 +38,13 @@ def orcid_callback():
             "Content-Type": "application/x-www-form-urlencoded",
         }
 
+        redirect_uri = utils.get_host_url() + constants.ORCID_REDIRECT_URL + request.args["token"] + \
+               "&code=" + request.args["code"]
+        
         data = "client_id=" + utils.get_app_config("ORCID_CLIENT_ID") + \
                "&client_secret=" + utils.get_app_config("ORCID_CLIENT_SECRET") + \
                "&grant_type=authorization_code&" \
-               "&redirect_uri=" + utils.get_host_url() + constants.ORCID_REDIRECT_URL + request.args["token"] + \
-               "&code=" + request.args["code"]
+               "&redirect_uri=" + redirect_uri
 
         response = requests.post(utils.get_app_config("ORCID_TOKEN_URL"), headers=headers, data=data, verify=False)
         if response.status_code == 200:
@@ -55,7 +57,8 @@ def orcid_callback():
             return render_template("auth_callback.html")
         else:
             logging.error("Error in orcid authorization response: status code: " +
-                         str(response.status_code) + " message: " + response.text)
+                         str(response.status_code) + " message: " + response.text +
+                         " | redirect_uri: " + redirect_uri)
             abort(400)
             return None
 
