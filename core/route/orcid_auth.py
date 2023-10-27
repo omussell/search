@@ -37,11 +37,12 @@ def orcid_callback():
             "Content-Type": "application/x-www-form-urlencoded",
         }
 
-        redirect_uri = utils.get_host_url() + constants.ORCID_REDIRECT_URL + request.args["token"] + \
-               "&code=" + request.args["code"]
-        
         # Safely fetch token or set to an empty string if not found
         token = request.args.get("token", "")
+
+        redirect_uri = utils.get_host_url() + constants.ORCID_REDIRECT_URL + token + \
+               "&code=" + request.args["code"]
+    
         data = "client_id=" + utils.get_app_config("ORCID_CLIENT_ID") + \
                "&client_secret=" + utils.get_app_config("ORCID_CLIENT_SECRET") + \
                "&grant_type=authorization_code&" \
