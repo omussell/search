@@ -5,6 +5,7 @@ import time
 import requests
 from flask import Blueprint, abort, redirect, render_template, request
 from oauthlib.oauth2 import WebApplicationClient
+from core.utils import get_request_data
 
 from core import constants, exceptions, utils
 from core.service import auth_service
@@ -37,16 +38,13 @@ def orcid_callback():
             "Content-Type": "application/x-www-form-urlencoded",
         }
 
-        # Safely fetch token or set to an empty string if not found
-        token = request.args.get("token", "")
-
-        redirect_uri = utils.get_host_url() + constants.ORCID_REDIRECT_URL + token + \
-               "&code=" + request.args["code"]
+        redirect_uri = utils.get_host_url() + constants.ORCID_REDIRECT_URL
     
         data = "client_id=" + utils.get_app_config("ORCID_CLIENT_ID") + \
                "&client_secret=" + utils.get_app_config("ORCID_CLIENT_SECRET") + \
-               "&grant_type=authorization_code&" \
-               "&redirect_uri=" + redirect_uri
+               "&grant_type=authorization_code" \
+               "&redirect_uri=" + redirect_uri + \
+               "&code=" + request.args["code"]
 
         response = requests.post(utils.get_app_config("ORCID_TOKEN_URL"), headers=headers, data=data, verify=False)
         if response.status_code == 200:
@@ -65,7 +63,7 @@ def orcid_callback():
             return None
 
     else:
-        logging.error("Error in the orcid call back " + request.json())
+        logging.error("Error in the orcid call back " + get_request_data())
         abort(400)
         return None
 
