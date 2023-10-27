@@ -21,7 +21,7 @@ def orcid_redirect():
     utils.set_host_url(request.host_url)
     client = WebApplicationClient(utils.get_app_config("ORCID_CLIENT_ID"))
     url = client.prepare_request_uri(utils.get_app_config("ORCID_AUTHORIZE_URL"),
-                                     redirect_uri=utils.get_host_url() + constants.ORCID_REDIRECT_URL,
+                                     redirect_uri=utils.get_host_url() + constants.ORCID_REDIRECT_URL + "?token=",
                                      scope="/read-limited /activities/update")
     return redirect(url)
 
@@ -47,14 +47,17 @@ def orcid_callback():
                "&code=" + request.args["code"]
 
         response = requests.post(utils.get_app_config("ORCID_TOKEN_URL"), headers=headers, data=data, verify=False)
-        if response.status_code == 200:
+        if response.status_code == 200: 
 
             res_json = response.json()
             res_json["expires_at"] = int(time.time()) + res_json["expires_in"]
 
             auth_service.set_orcid_info(res_json)
 
-            return render_template("auth_callback.html")
+            if ("token" in request.args):
+                return render_template("auth_callback.html")
+            else:
+                return render_template("splash.html")
         else:
             logging.error("Error in orcid authorization response: status code: " +
                          str(response.status_code) + " message: " + response.text +
