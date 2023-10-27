@@ -1,8 +1,11 @@
 import time
 
 from flask import session
+from datetime import datetime
+
 
 from core.service import auth_service
+import logging as logger
 
 CONFIG = None
 BASE_ROOT = None
@@ -21,6 +24,8 @@ def signed_in_info():
     if orcid_info:
         time_now = time.time()
         if orcid_info["expires_at"] <= time_now:
+            expired_at_human_readable = datetime.fromtimestamp(orcid_info["expires_at"]).strftime('%Y-%m-%d %H:%M:%S')
+            logger.error("Orcid session expired. Expired at: " + orcid_info["expires_at"] + " " + expired_at_human_readable)
             logout()
             # returns signed_in, orcid_info and expired
             return False, None, True
