@@ -42,7 +42,7 @@ API_REQUEST_ERROR = "Could not connect to Crossref REST API"
 UNKNOWN_ERROR = "Unknown error occurred "
 
 # ORCID Authentication
-ORCID_REDIRECT_URL = "auth/orcid/callback?token"
+ORCID_REDIRECT_URL = "auth/orcid/callback"
 
 # Session Constants
 SESSION_ORCID = "orcid"
