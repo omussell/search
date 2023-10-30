@@ -26,6 +26,7 @@ def orcid_redirect():
     return redirect(url)
 
 
+@auth.route("/orcid/search-and-link")
 @auth.route("/orcid/callback")
 def orcid_callback():
     """Callback for orcid signin.
@@ -54,10 +55,11 @@ def orcid_callback():
 
             auth_service.set_orcid_info(res_json)
 
-            if ("token" in request.args):
-                return render_template("auth_callback.html")
-            else:
+            if request.path == '/auth/orcid/search-and-link':
                 return render_template("splash.html")
+            else:
+                return render_template("auth_callback.html")
+
         else:
             logging.error("Error in orcid authorization response: status code: " +
                          str(response.status_code) + " message: " + response.text +
