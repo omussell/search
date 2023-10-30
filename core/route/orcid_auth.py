@@ -57,10 +57,9 @@ def orcid_callback():
 
             if request.path == '/auth/orcid/search-and-link':
                 return render_template("splash.html")
-            elif ("token" in request.args):
-                return render_template("auth_callback.html")
             else:
-                return render_template("splash.html")
+                return render_template("auth_callback.html")
+
         else:
             logging.error("Error in orcid authorization response: status code: " +
                          str(response.status_code) + " message: " + response.text +
