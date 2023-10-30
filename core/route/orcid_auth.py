@@ -40,9 +40,9 @@ def orcid_callback():
         }
 
         if request.path == '/auth/orcid/search-and-link':
-            redirect_uri = utils.get_host_url() + constants.ORCID_REDIRECT_URL
+            redirect_uri = utils.get_host_url() + constants.ORCID_SEARCH_AND_LINK_REDIRECT_URL
         else:
-            redirect_uri = utils.get_host_url() + constants.ORCID_REDIRECT_URL + "?token="
+            redirect_uri = utils.get_host_url() + constants.ORCID_REDIRECT_URL
     
         data = "client_id=" + utils.get_app_config("ORCID_CLIENT_ID") + \
                "&client_secret=" + utils.get_app_config("ORCID_CLIENT_SECRET") + \
