@@ -88,6 +88,10 @@ def works_help():
     page = {"name": constants.CATEGORY_HELP}
     return render_template("search_help.html", page=page)
 
+@home.route("/dois")
+def dois():
+    return Response(response="Bad Request", status=400,  mimetype="text/plain")
+
 def splash():
     page = {"name": constants.CATEGORY_WORKS}
     return render_template("splash.html", page=page)
