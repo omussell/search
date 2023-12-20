@@ -1,0 +1,455 @@
+{
+    "status": "ok",
+    "message-type": "work",
+    "message-version": "1.0.0",
+    "message": {
+        "indexed": {
+            "date-parts": [
+                [
+                    2023,
+                    12,
+                    19
+                ]
+            ],
+            "date-time": "2023-12-19T09:45:43Z",
+            "timestamp": 1702979143030
+        },
+        "reference-count": 19,
+        "publisher": "Elsevier BV",
+        "issue": "3",
+        "license": [
+            {
+                "start": {
+                    "date-parts": [
+                        [
+                            2010,
+                            3,
+                            1
+                        ]
+                    ],
+                    "date-time": "2010-03-01T00:00:00Z",
+                    "timestamp": 1267401600000
+                },
+                "content-version": "tdm",
+                "delay-in-days": 0,
+                "URL": "https://www.elsevier.com/tdm/userlicense/1.0/"
+            },
+            {
+                "start": {
+                    "date-parts": [
+                        [
+                            2023,
+                            2,
+                            7
+                        ]
+                    ],
+                    "date-time": "2023-02-07T00:00:00Z",
+                    "timestamp": 1675728000000
+                },
+                "content-version": "vor",
+                "delay-in-days": 4726,
+                "URL": "http://www.elsevier.com/open-access/userlicense/1.0/"
+            }
+        ],
+        "content-domain": {
+            "domain": [
+                "elsevier.com",
+                "sciencedirect.com"
+            ],
+            "crossmark-restriction": true
+        },
+        "short-container-title": [
+            "The Journal of Nutrition"
+        ],
+        "published-print": {
+            "date-parts": [
+                [
+                    2010,
+                    3
+                ]
+            ]
+        },
+        "DOI": "10.3945/jn.109.117093",
+        "type": "journal-article",
+        "created": {
+            "date-parts": [
+                [
+                    2010,
+                    1,
+                    21
+                ]
+            ],
+            "date-time": "2010-01-21T03:24:39Z",
+            "timestamp": 1264044279000
+        },
+        "page": "483-488",
+        "update-policy": "http://dx.doi.org/10.1016/elsevier_cm_policy",
+        "source": "Crossref",
+        "is-referenced-by-count": 79,
+        "title": [
+            "Dietary Supplementation with Lactobacilli and Bifidobacteria Is Well Tolerated and Not Associated with Adverse Events during Late Pregnancy and Early Infancy"
+        ],
+        "prefix": "10.1016",
+        "volume": "140",
+        "author": [
+            {
+                "given": "Stephen J.",
+                "family": "Allen",
+                "sequence": "first",
+                "affiliation": []
+            },
+            {
+                "given": "Susan",
+                "family": "Jordan",
+                "sequence": "additional",
+                "affiliation": []
+            },
+            {
+                "given": "Melanie",
+                "family": "Storey",
+                "sequence": "additional",
+                "affiliation": []
+            },
+            {
+                "given": "Catherine A.",
+                "family": "Thornton",
+                "sequence": "additional",
+                "affiliation": []
+            },
+            {
+                "given": "Michael",
+                "family": "Gravenor",
+                "sequence": "additional",
+                "affiliation": []
+            },
+            {
+                "given": "Iveta",
+                "family": "Garaiova",
+                "sequence": "additional",
+                "affiliation": []
+            },
+            {
+                "given": "Susan F.",
+                "family": "Plummer",
+                "sequence": "additional",
+                "affiliation": []
+            },
+            {
+                "given": "Duolao",
+                "family": "Wang",
+                "sequence": "additional",
+                "affiliation": []
+            },
+            {
+                "given": "Gareth",
+                "family": "Morgan",
+                "sequence": "additional",
+                "affiliation": []
+            }
+        ],
+        "member": "78",
+        "reference": [
+            {
+                "key": "10.3945/jn.109.117093_bib1",
+                "unstructured": "FAO/WHO. Report on Joint FAO/WHO Expert Consultation on Evaluation of Health and Nutritional Properties of Probiotics in Food Including Powder Milk with Live Lactic Acid Bacteria. 2001 [cited 2009 Oct 20]. Available from: http://ftp.fao.org/es/esn/food/probio_report_en.pdf."
+            },
+            {
+                "key": "10.3945/jn.109.117093_bib2",
+                "unstructured": "FAO/WHO. Report of a Joint FAO/WHO Working Group on Drafting Guidelines for the Evaluation of Probiotics in Food. 2002 [cited 2009 Oct 20]. Available from: ftp://ftp.fao.org/es/esn/food/wgreport2.pdf."
+            },
+            {
+                "key": "10.3945/jn.109.117093_bib3",
+                "doi-asserted-by": "crossref",
+                "first-page": "351",
+                "DOI": "10.1177/0115426507022003351",
+                "article-title": "Use of probiotics in pediatrics: rationale, mechanisms of action, and practical aspects",
+                "volume": "22",
+                "author": "Saavedra",
+                "year": "2007",
+                "journal-title": "Nutr Clin Pract."
+            },
+            {
+                "key": "10.3945/jn.109.117093_bib4",
+                "doi-asserted-by": "crossref",
+                "first-page": "50",
+                "DOI": "10.1177/0884533608329298",
+                "article-title": "Clinical use of probiotics in the pediatric population",
+                "volume": "24",
+                "author": "Wallace",
+                "year": "2009",
+                "journal-title": "Nutr Clin Pract."
+            },
+            {
+                "key": "10.3945/jn.109.117093_bib5",
+                "doi-asserted-by": "crossref",
+                "first-page": "1256",
+                "DOI": "10.1093/ajcn/83.6.1256",
+                "article-title": "Probiotic use in clinical practice: what are the risks?",
+                "volume": "83",
+                "author": "Boyle",
+                "year": "2006",
+                "journal-title": "Am J Clin Nutr."
+            },
+            {
+                "key": "10.3945/jn.109.117093_bib6",
+                "doi-asserted-by": "crossref",
+                "first-page": "S104",
+                "DOI": "10.1086/523331",
+                "article-title": "The safety of probiotics",
+                "volume": "46",
+                "author": "Snydman",
+                "year": "2008",
+                "journal-title": "Clin Infect Dis."
+            },
+            {
+                "key": "10.3945/jn.109.117093_bib7",
+                "doi-asserted-by": "crossref",
+                "first-page": "651",
+                "DOI": "10.1016/S0140-6736(08)60207-X",
+                "article-title": "Probiotic prophylaxis in predicted severe acute pancreatitis: a randomised, double-blind, placebo-controlled trial",
+                "volume": "371",
+                "author": "Besselink",
+                "year": "2008",
+                "journal-title": "Lancet."
+            },
+            {
+                "key": "10.3945/jn.109.117093_bib8",
+                "unstructured": "Directive 2001/20/EC of the European Parliament and of the Council of 4 April 2001 on the approximation of the laws, regulations and administrative provisions of the Member States relating to the implementation of good clinical practice in the conduct of clinical trials on medicinal products for human use [cited 2009 Oct 20]. Available from: www.wctn.org.uk/downloads/EU_Directive/Directive.pdf."
+            },
+            {
+                "key": "10.3945/jn.109.117093_bib9",
+                "unstructured": "WHO. (2007). International statistical classification of diseases and related health problems. 10th revision. version for 2007 [cited 2009 Oct 20]. Available from: www.who.int/classifications/apps/icd/icd10online/."
+            },
+            {
+                "key": "10.3945/jn.109.117093_bib10",
+                "doi-asserted-by": "crossref",
+                "first-page": "542",
+                "DOI": "10.1016/S1701-2163(16)34218-9",
+                "article-title": "Probiotic safety in pregnancy: a systematic review and meta-analysis of randomized controlled trials of Lactobacillus, Bifidobacterium, and Saccharomyces spp",
+                "volume": "31",
+                "author": "Dugoua",
+                "year": "2009",
+                "journal-title": "J Obstet Gynaecol Can."
+            },
+            {
+                "key": "10.3945/jn.109.117093_bib11",
+                "first-page": "3",
+                "article-title": "Squabble over risks of probiotic infant formula",
+                "volume": "181",
+                "author": "Collier",
+                "year": "2009",
+                "journal-title": "CMAJ."
+            },
+            {
+                "key": "10.3945/jn.109.117093_bib12",
+                "doi-asserted-by": "crossref",
+                "first-page": "149",
+                "DOI": "10.1016/j.idairyj.2008.10.004",
+                "article-title": "Safety aspects of probiotic bacterial strains Lactobacillus rhamnosus HN001 and Bifidobacterium animalis subsp. lactis HN019 in human infants aged 0–2 years",
+                "volume": "19",
+                "author": "Dekker",
+                "year": "2009",
+                "journal-title": "Int Dairy J."
+            },
+            {
+                "key": "10.3945/jn.109.117093_bib13",
+                "doi-asserted-by": "crossref",
+                "first-page": "1365",
+                "DOI": "10.1093/ajcn/87.5.1365",
+                "article-title": "Assessment of the safety, tolerance, and protective effect against diarrhea of infant formulas containing mixtures of probiotics or probiotics and prebiotics in a randomized controlled trial",
+                "volume": "87",
+                "author": "Chouraqui",
+                "year": "2008",
+                "journal-title": "Am J Clin Nutr."
+            },
+            {
+                "key": "10.3945/jn.109.117093_bib14",
+                "doi-asserted-by": "crossref",
+                "first-page": "415",
+                "DOI": "10.1080/07315724.2006.10719554",
+                "article-title": "Safety and tolerance of a probiotic formula in early infancy comparing two probiotic agents: a pilot study",
+                "volume": "25",
+                "author": "Weizman",
+                "year": "2006",
+                "journal-title": "J Am Coll Nutr."
+            },
+            {
+                "key": "10.3945/jn.109.117093_bib15",
+                "doi-asserted-by": "crossref",
+                "first-page": "1",
+                "DOI": "10.1016/j.nut.2006.09.007",
+                "article-title": "Clinical evaluation of a new starter formula for infants containing live Bifidobacterium longum BL999 and prebiotics",
+                "volume": "23",
+                "author": "Puccio",
+                "year": "2007",
+                "journal-title": "Nutrition."
+            },
+            {
+                "key": "10.3945/jn.109.117093_bib16",
+                "doi-asserted-by": "crossref",
+                "first-page": "8",
+                "DOI": "10.1542/peds.2007-1192",
+                "article-title": "Long-term safety and impact on infection rates of postnatal probiotic and prebiotic (synbiotic) treatment: randomized, double-blind, placebo-controlled trial",
+                "volume": "122",
+                "author": "Kukkonen",
+                "year": "2008",
+                "journal-title": "Pediatrics."
+            },
+            {
+                "key": "10.3945/jn.109.117093_bib17",
+                "doi-asserted-by": "crossref",
+                "first-page": "869",
+                "DOI": "10.1017/S0007114509289069",
+                "article-title": "Tolerance and safety of Lactobacillus paracasei ssp. paracasei in combination with Bifidobacterium animalis ssp. lactis in a prebiotic-containing infant formula: a randomised controlled trial",
+                "volume": "102",
+                "author": "Vlieger",
+                "year": "2009",
+                "journal-title": "Br J Nutr."
+            },
+            {
+                "key": "10.3945/jn.109.117093_bib18",
+                "doi-asserted-by": "crossref",
+                "first-page": "1706",
+                "DOI": "10.1017/S0007114508084080",
+                "article-title": "Safety of supplementing infant formula with long-chain polyunsaturated fatty acids and Bifidobacterium lactis in term infants: a randomised controlled trial",
+                "volume": "101",
+                "author": "Gibson",
+                "year": "2009",
+                "journal-title": "Br J Nutr."
+            },
+            {
+                "key": "10.3945/jn.109.117093_bib19",
+                "doi-asserted-by": "crossref",
+                "first-page": "184",
+                "DOI": "10.1016/j.jaci.2006.08.036",
+                "article-title": "Probiotic supplementation for the first 6 months of life fails to reduce the risk of atopic dermatitis and increases the risk of allergen sensitization in high-risk children: a randomized controlled trial",
+                "volume": "119",
+                "author": "Taylor",
+                "year": "2007",
+                "journal-title": "J Allergy Clin Immunol."
+            }
+        ],
+        "container-title": [
+            "The Journal of Nutrition"
+        ],
+        "original-title": [],
+        "language": "en",
+        "link": [
+            {
+                "URL": "https://api.elsevier.com/content/article/PII:S0022316622069930?httpAccept=text/xml",
+                "content-type": "text/xml",
+                "content-version": "vor",
+                "intended-application": "text-mining"
+            },
+            {
+                "URL": "https://api.elsevier.com/content/article/PII:S0022316622069930?httpAccept=text/plain",
+                "content-type": "text/plain",
+                "content-version": "vor",
+                "intended-application": "text-mining"
+            },
+            {
+                "URL": "http://academic.oup.com/jn/article-pdf/140/3/483/23949364/483.pdf",
+                "content-type": "unspecified",
+                "content-version": "vor",
+                "intended-application": "similarity-checking"
+            }
+        ],
+        "deposited": {
+            "date-parts": [
+                [
+                    2023,
+                    6,
+                    13
+                ]
+            ],
+            "date-time": "2023-06-13T23:08:08Z",
+            "timestamp": 1686697688000
+        },
+        "score": 1,
+        "resource": {
+            "primary": {
+                "URL": "https://linkinghub.elsevier.com/retrieve/pii/S0022316622069930"
+            }
+        },
+        "subtitle": [],
+        "short-title": [],
+        "issued": {
+            "date-parts": [
+                [
+                    2010,
+                    3
+                ]
+            ]
+        },
+        "references-count": 19,
+        "journal-issue": {
+            "issue": "3",
+            "published-print": {
+                "date-parts": [
+                    [
+                        2010,
+                        3
+                    ]
+                ]
+            }
+        },
+        "alternative-id": [
+            "S0022316622069930"
+        ],
+        "URL": "http://dx.doi.org/10.3945/jn.109.117093",
+        "relation": {},
+        "ISSN": [
+            "0022-3166"
+        ],
+        "issn-type": [
+            {
+                "value": "0022-3166",
+                "type": "print"
+            }
+        ],
+        "subject": [
+            "Nutrition and Dietetics",
+            "Medicine (miscellaneous)"
+        ],
+        "published": {
+            "date-parts": [
+                [
+                    2010,
+                    3
+                ]
+            ]
+        },
+        "assertion": [
+            {
+                "value": "Elsevier",
+                "name": "publisher",
+                "label": "This article is maintained by"
+            },
+            {
+                "value": "Dietary Supplementation with Lactobacilli and Bifidobacteria Is Well Tolerated and Not Associated with Adverse Events during Late Pregnancy and Early Infancy",
+                "name": "articletitle",
+                "label": "Article Title"
+            },
+            {
+                "value": "The Journal of Nutrition",
+                "name": "journaltitle",
+                "label": "Journal Title"
+            },
+            {
+                "value": "https://doi.org/10.3945/jn.109.117093",
+                "name": "articlelink",
+                "label": "CrossRef DOI link to publisher maintained version"
+            },
+            {
+                "value": "article",
+                "name": "content_type",
+                "label": "Content Type"
+            },
+            {
+                "value": "Copyright © 2010 American Society for Nutrition. Published by Elsevier Inc. All rights reserved.",
+                "name": "copyright",
+                "label": "Copyright"
+            }
+        ]
+    }
+}
