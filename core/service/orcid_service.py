@@ -390,6 +390,12 @@ def extract_orcid_dois(account_info):
     return extracted_dois
 
 
+def add_work_type(record, doi_record):
+    orcid_type = orcid_work_type(doi_record.get('type'))
+    record['type'] = orcid_type
+    return record
+
+
 def create_orcid_claim_json(doi_record, return_dict=False):
     """
     Convert doi record to Orcid json record to claim.
@@ -400,6 +406,10 @@ def create_orcid_claim_json(doi_record, return_dict=False):
 
         # Initialize an empty ORCID record
         orcid_record = {}
+        logging.error(f"Adding work type for {doi_record['DOI']}")
+        add_work_type(orcid_record, doi_record)
+        logging.error(
+            f"Work type added for {doi_record['DOI']} Record {orcid_record}")
         logging.error(f"Fetching citation for {doi_record['DOI']}")
         # Fetch and add citation
         citation_bibtex = fetch_citation_bibtex(doi_record['DOI'])
