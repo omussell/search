@@ -1,145 +1,139 @@
 {
-  "citation": {
-    "citation-type": "bibtex",
-    "citation-value": " @book{Kalinin_2020, title={Handbook on Big Data and Machine Learning in the Physical Sciences: Volume 1: Big Data Methods in Experimental Materials Discovery}, ISBN={9789811204555}, url={http://dx.doi.org/10.1142/11389-vol1}, DOI={10.1142/11389-vol1}, journal={Handbook on Big Data and Machine Learning in the Physical Sciences}, publisher={World Scientific}, author={Kalinin, Sergei V and Foster, Ian and Kalidindi, Surya and Kalinin, Sergei V and Lookman, Turab and van Dam, Kerstin Kleese and Yager, Kevin G and Campbell, Stuart I and Farnsworth, Richard and van Dam, Maartje}, year={2020}, month=mar }\n"
-  },
-  "external-ids": {
-    "external-id": [
-      {
-        "external-id-type": "doi",
-        "external-id-value": "10.1142/11389-vol1",
-        "external-id-url": {
-          "value": "http://dx.doi.org/10.1142/11389-vol1"
-        },
-        "external-id-relationship": "self"
-      },
-      {
-        "external-id-type": "isbn",
-        "external-id-value": "9789811204555",
-        "external-id-relationship": "part-of"
-      }
-    ]
-  },
-  "title": {
+    "citation": {
+        "citation-type": "bibtex",
+        "citation-value": " @book{Kalinin_2020, title={Handbook on Big Data and Machine Learning in the Physical Sciences: Volume 1: Big Data Methods in Experimental Materials Discovery}, ISBN={9789811204555}, url={http://dx.doi.org/10.1142/11389-vol1}, DOI={10.1142/11389-vol1}, journal={Handbook on Big Data and Machine Learning in the Physical Sciences}, publisher={World Scientific}, author={Kalinin, Sergei V and Foster, Ian and Kalidindi, Surya and Kalinin, Sergei V and Lookman, Turab and van Dam, Kerstin Kleese and Yager, Kevin G and Campbell, Stuart I and Farnsworth, Richard and van Dam, Maartje}, year={2020}, month=mar }\n"
+    },
+    "external-ids": {
+        "external-id": [
+            {
+                "external-id-type": "doi",
+                "external-id-value": "10.1142/11389-vol1",
+                "external-id-url": {
+                    "value": "http://dx.doi.org/10.1142/11389-vol1"
+                },
+                "external-id-relationship": "self"
+            },
+            {
+                "external-id-type": "isbn",
+                "external-id-value": "9789811204555",
+                "external-id-relationship": "part-of"
+            }
+        ]
+    },
     "title": {
-      "value": [
-        "Handbook on Big Data and Machine Learning in the Physical Sciences"
-      ]
+        "title": {
+            "value": "Handbook on Big Data and Machine Learning in the Physical Sciences"
+        },
+        "subtitle": {
+            "value": "Volume 1: Big Data Methods in Experimental Materials Discovery"
+        }
     },
-    "subtitle": {
-      "value": [
-        "Volume 1: Big Data Methods in Experimental Materials Discovery"
-      ]
+    "journal-title": {
+        "value": "Handbook on Big Data and Machine Learning in the Physical Sciences"
+    },
+    "contributors": {
+        "contributor": [
+            {
+                "credit-name": {
+                    "value": "Kalinin, Sergei V"
+                },
+                "contributor-attributes": {
+                    "contributor-role": "author",
+                    "contributor-sequence": "first"
+                }
+            },
+            {
+                "credit-name": {
+                    "value": "Foster, Ian"
+                },
+                "contributor-attributes": {
+                    "contributor-role": "author",
+                    "contributor-sequence": "additional"
+                }
+            },
+            {
+                "credit-name": {
+                    "value": "Kalidindi, Surya"
+                },
+                "contributor-attributes": {
+                    "contributor-role": "author",
+                    "contributor-sequence": "additional"
+                }
+            },
+            {
+                "credit-name": {
+                    "value": "Kalinin, Sergei V"
+                },
+                "contributor-attributes": {
+                    "contributor-role": "author",
+                    "contributor-sequence": "additional"
+                }
+            },
+            {
+                "credit-name": {
+                    "value": "Lookman, Turab"
+                },
+                "contributor-attributes": {
+                    "contributor-role": "author",
+                    "contributor-sequence": "additional"
+                }
+            },
+            {
+                "credit-name": {
+                    "value": "van Dam, Kerstin Kleese"
+                },
+                "contributor-attributes": {
+                    "contributor-role": "author",
+                    "contributor-sequence": "additional"
+                }
+            },
+            {
+                "credit-name": {
+                    "value": "Yager, Kevin G"
+                },
+                "contributor-attributes": {
+                    "contributor-role": "author",
+                    "contributor-sequence": "additional"
+                }
+            },
+            {
+                "credit-name": {
+                    "value": "Campbell, Stuart I"
+                },
+                "contributor-attributes": {
+                    "contributor-role": "author",
+                    "contributor-sequence": "additional"
+                }
+            },
+            {
+                "credit-name": {
+                    "value": "Farnsworth, Richard"
+                },
+                "contributor-attributes": {
+                    "contributor-role": "author",
+                    "contributor-sequence": "additional"
+                }
+            },
+            {
+                "credit-name": {
+                    "value": "van Dam, Maartje"
+                },
+                "contributor-attributes": {
+                    "contributor-role": "author",
+                    "contributor-sequence": "additional"
+                }
+            }
+        ]
+    },
+    "publication-date": {
+        "year": {
+            "value": "2020"
+        },
+        "month": {
+            "value": "03"
+        },
+        "day": {
+            "value": "02"
+        }
     }
-  },
-  "journal-title": {
-    "value": [
-      "Handbook on Big Data and Machine Learning in the Physical Sciences"
-    ]
-  },
-  "contributors": {
-    "contributor": [
-      {
-        "credit-name": {
-          "value": "Kalinin, Sergei V"
-        },
-        "contributor-attributes": {
-          "contributor-role": "author",
-          "contributor-sequence": "first"
-        }
-      },
-      {
-        "credit-name": {
-          "value": "Foster, Ian"
-        },
-        "contributor-attributes": {
-          "contributor-role": "author",
-          "contributor-sequence": "additional"
-        }
-      },
-      {
-        "credit-name": {
-          "value": "Kalidindi, Surya"
-        },
-        "contributor-attributes": {
-          "contributor-role": "author",
-          "contributor-sequence": "additional"
-        }
-      },
-      {
-        "credit-name": {
-          "value": "Kalinin, Sergei V"
-        },
-        "contributor-attributes": {
-          "contributor-role": "author",
-          "contributor-sequence": "additional"
-        }
-      },
-      {
-        "credit-name": {
-          "value": "Lookman, Turab"
-        },
-        "contributor-attributes": {
-          "contributor-role": "author",
-          "contributor-sequence": "additional"
-        }
-      },
-      {
-        "credit-name": {
-          "value": "van Dam, Kerstin Kleese"
-        },
-        "contributor-attributes": {
-          "contributor-role": "author",
-          "contributor-sequence": "additional"
-        }
-      },
-      {
-        "credit-name": {
-          "value": "Yager, Kevin G"
-        },
-        "contributor-attributes": {
-          "contributor-role": "author",
-          "contributor-sequence": "additional"
-        }
-      },
-      {
-        "credit-name": {
-          "value": "Campbell, Stuart I"
-        },
-        "contributor-attributes": {
-          "contributor-role": "author",
-          "contributor-sequence": "additional"
-        }
-      },
-      {
-        "credit-name": {
-          "value": "Farnsworth, Richard"
-        },
-        "contributor-attributes": {
-          "contributor-role": "author",
-          "contributor-sequence": "additional"
-        }
-      },
-      {
-        "credit-name": {
-          "value": "van Dam, Maartje"
-        },
-        "contributor-attributes": {
-          "contributor-role": "author",
-          "contributor-sequence": "additional"
-        }
-      }
-    ]
-  },
-  "publication-date": {
-    "year": {
-      "value": "2020"
-    },
-    "month": {
-      "value": "03"
-    },
-    "day": {
-      "value": "02"
-    }
-  }
 }

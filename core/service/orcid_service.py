@@ -259,18 +259,27 @@ def add_external_ids(record, doi_record):
     return record
 
 
+def extract_first_if_array(field):
+    """Extracts the first element if the field is an array, otherwise returns the field as is."""
+    if isinstance(field, list):
+        return field[0] if field else ""
+    return field
+
+
 def add_titles(record, doi_record):
     if "title" in doi_record and doi_record["title"]:
-        record.setdefault("title", {})["title"] = {
-            "value": doi_record["title"]}
+        title_value = extract_first_if_array(doi_record["title"])
+        record.setdefault("title", {})["title"] = {"value": title_value}
 
     if "subtitle" in doi_record and doi_record["subtitle"]:
-        record.setdefault("title", {})["subtitle"] = {
-            "value": doi_record["subtitle"]}
+        subtitle_value = extract_first_if_array(doi_record["subtitle"])
+        record.setdefault("title", {})["subtitle"] = {"value": subtitle_value}
 
     # journal-title is overloaded in the Orcid schema to mean container-title
     if "container-title" in doi_record and doi_record["container-title"]:
-        record["journal-title"] = {"value": doi_record["container-title"]}
+        container_title_value = extract_first_if_array(
+            doi_record["container-title"])
+        record["journal-title"] = {"value": container_title_value}
 
 
 def add_contributors(record, doi_record):
@@ -313,8 +322,8 @@ def add_contributors(record, doi_record):
 
 
 def extract_orcid_dois(account_info):
-    """Get all the dois claimed by the user
-    :param account_info: User orcid account info
+    """Get all the DOIs claimed by the user.
+    :param account_info: User ORCID account info
     :return: List of extracted DOIs
     """
     extracted_dois = []
@@ -327,44 +336,53 @@ def extract_orcid_dois(account_info):
     try:
         url = get_app_config("ORCID_MEMBER_URL") + \
             account_info["orcid"] + "/works"
-        logging.error(f"Attempting API request to: {url}")
-        response = requests.get(url,
-                                headers=headers, verify=False)
+        logging.info(f"Sending API request to: {url}")
+        response = requests.get(url, headers=headers, verify=False)
 
         # Log response details
-        logging.info(f"Response status code: {response.status_code}")
-        logging.info(f"Response body: {response.text}")
+        logging.info(
+            f"Received response with status code: {response.status_code}")
+        if response.content:
+            logging.debug(f"Response content: {response.content}")
 
         response.raise_for_status()
     except requests.RequestException as e:
-        logging.exception(
+        logging.error(
             f"Error fetching ORCID works. Exception: {e}, Response status: {response.status_code if 'response' in locals() else 'N/A'}, Response text: {response.text if 'response' in locals() else 'N/A'}")
         raise exceptions.APIConnectionException(e)
 
     if response.status_code == 200:
-        res_json = response.json()
+        try:
+            res_json = response.json()
 
-        if "group" in res_json:
-            works = res_json["group"]
+            if "group" in res_json:
+                works = res_json["group"]
+                logging.info(f"Processing {len(works)} work entries")
 
-            for work_loc in works:
-                if "external-ids" in work_loc:
-                    if "external-id" in work_loc["external-ids"]:
-                        ids_loc = work_loc["external-ids"]["external-id"]
-                        for id_loc in ids_loc:
-                            try:
-                                id_type = id_loc["external-id-type"]
-                                id_val = id_loc["external-id-value"]
+                for work_loc in works:
+                    if "external-ids" in work_loc:
+                        if "external-id" in work_loc["external-ids"]:
+                            ids_loc = work_loc["external-ids"]["external-id"]
+                            for id_loc in ids_loc:
+                                try:
+                                    id_type = id_loc["external-id-type"]
+                                    id_val = id_loc["external-id-value"]
 
-                                if id_type.upper() == "DOI" and isinstance(id_val, str):
-                                    extracted_dois.append(id_val.casefold())
-                            except AttributeError as e:
-                                logging.warning(
-                                    f"Malformed DOI data encountered: {e}")
+                                    if id_type.upper() == "DOI" and isinstance(id_val, str):
+                                        extracted_dois.append(
+                                            id_val.casefold())
+                                except AttributeError as e:
+                                    logging.warning(
+                                        f"Malformed DOI data encountered: {e}")
+            else:
+                logging.warning("No 'group' field in response JSON")
+        except ValueError as e:
+            logging.error(f"Error parsing JSON response: {e}")
     else:
         logging.error(
-            f"API returns error. Status Code : {response.status_code} - Message : {response.text}")
+            f"API returns error. Status Code: {response.status_code} - Message: {response.text}")
 
+    logging.info(f"Extracted {len(extracted_dois)} DOIs")
     return extracted_dois
 
 

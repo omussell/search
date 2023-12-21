@@ -366,19 +366,6 @@ def test_extract_orcid_dois_api_failure(mock_requests_get):
         extract_orcid_dois(account_info)
 
 
-def test_extract_orcid_dois_non_200_response(mock_requests_get):
-    mock_response = MagicMock()
-    mock_response.status_code = 404
-    mock_response.text = "Not Found"
-    mock_requests_get.return_value = mock_response
-    account_info = {"access_token": "token123", "orcid": "0000-0000-0000-0000"}
-
-    with patch('logging.error') as mock_logging_error:
-        extract_orcid_dois(account_info)
-        mock_logging_error.assert_called_with(
-            "API returns error. Status Code : 404 - Message : Not Found")
-
-
 def test_extract_orcid_dois_empty_doi_list(mock_requests_get):
     mock_response = MagicMock()
     mock_response.status_code = 200
@@ -411,6 +398,19 @@ def test_extract_orcid_dois_malformed_data(mock_requests_get):
     assert dois == []
 
 
+def test_extract_orcid_dois_non_200_response(mock_requests_get):
+    mock_response = MagicMock()
+    mock_response.status_code = 404
+    mock_response.text = "Not Found"
+    mock_requests_get.return_value = mock_response
+    account_info = {"access_token": "token123", "orcid": "0000-0000-0000-0000"}
+
+    with patch('logging.error') as mock_logging_error:
+        extract_orcid_dois(account_info)
+        expected_error_message = "API returns error. Status Code: 404 - Message: Not Found"
+        mock_logging_error.assert_called_with(expected_error_message)
+
+
 def test_extract_orcid_dois_authentication_issue(mock_requests_get):
     mock_response = MagicMock()
     mock_response.status_code = 401
@@ -421,7 +421,7 @@ def test_extract_orcid_dois_authentication_issue(mock_requests_get):
 
     with patch('logging.error') as mock_logging_error:
         extract_orcid_dois(account_info)
-        expected_error_message = "API returns error. Status Code : 401 - Message : Unauthorized"
+        expected_error_message = "API returns error. Status Code: 401 - Message: Unauthorized"
         mock_logging_error.assert_called_with(expected_error_message)
 
 
