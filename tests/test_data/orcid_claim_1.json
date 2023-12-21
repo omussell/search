@@ -1,4 +1,5 @@
 {
+    "type": "journal-article",
     "citation": {
         "citation-type": "bibtex",
         "citation-value": " @article{Allen_2010, title={Dietary Supplementation with Lactobacilli and Bifidobacteria Is Well Tolerated and Not Associated with Adverse Events during Late Pregnancy and Early Infancy}, volume={140}, ISSN={0022-3166}, url={http://dx.doi.org/10.3945/jn.109.117093}, DOI={10.3945/jn.109.117093}, number={3}, journal={The Journal of Nutrition}, publisher={Elsevier BV}, author={Allen, Stephen J. and Jordan, Susan and Storey, Melanie and Thornton, Catherine A. and Gravenor, Michael and Garaiova, Iveta and Plummer, Susan F. and Wang, Duolao and Morgan, Gareth}, year={2010}, month=mar, pages={483\u2013488} }\n"
