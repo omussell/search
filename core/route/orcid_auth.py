@@ -156,8 +156,12 @@ def claim():
                         logging.error(
                             f"Response from POST to {post_url}: Status {response.status_code}, Body: {response.text}")
 
-                        if response.status_code == 201 or 200:
-                            status = 'claim-ok'
+                        if response.status_code == 201:
+                            extracted_dois = extract_orcid_dois(orcid_info)
+                            if doi.casefold() in extracted_dois:
+                                status = "ok_visible"
+                            else:
+                                status = "ok"
 
                     except Exception as e:
                         logging.exception(
