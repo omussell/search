@@ -6,6 +6,8 @@ from core.constants import WORKS_API_URL
 from core.utils import DOIRecordParser, get_app_config
 from datetime import datetime
 
+from settings import API_HEADERS
+
 
 def orcid_work_type(internal_work_type):
     """Map internal work type to ORCID work type."""
@@ -126,8 +128,9 @@ def add_pub_date(record, doi_record):
 def fetch_citation_bibtex(doi):
     # Fetch citation data in BibTeX format
     url = f"{WORKS_API_URL}/{doi}/transform?mailto={get_app_config('API_MAILTO')}"
+    headers = {**API_HEADERS, **{'Accept': 'application/x-bibtex'}}
     response = requests.get(url,
-                            headers={'Accept': 'application/x-bibtex'})
+                            headers=headers)
     logging.error(
         f"Response from {url}: Status {response.status_code}, Body: {response.text}")
     if response.status_code == 200:
@@ -336,7 +339,7 @@ def extract_orcid_dois(account_info):
     try:
         response = requests.get(url, headers=headers, verify=False)
         logging.error(
-            f"Received response: Status {response.status_code}, Headers: {response.headers}, Body: {response.text}")
+            f"Received orcid api response: Status {response.status_code}, Headers: {response.headers}, Body: {response.text}")
         response.raise_for_status()
     except requests.exceptions.HTTPError as e:
         if response.status_code == 404:

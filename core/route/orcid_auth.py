@@ -7,6 +7,7 @@ from core.service.orcid_service import create_orcid_claim_json, extract_orcid_do
 from flask import Blueprint, abort, redirect, render_template, request
 from oauthlib.oauth2 import WebApplicationClient
 from core.utils import get_request_data
+from settings import API_HEADERS
 
 from core import constants, exceptions, utils
 from core.service import auth_service
@@ -114,7 +115,8 @@ def claim():
                 try:
                     # Log external API request details
                     logging.error(f"Making GET request to {url}")
-                    res = requests.get(url, timeout=constants.REQUEST_TIME_OUT)
+                    res = requests.get(
+                        url, timeout=constants.REQUEST_TIME_OUT, headers=API_HEADERS)
 
                     # Log response details
                     logging.error(
