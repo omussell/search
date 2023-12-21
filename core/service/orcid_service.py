@@ -325,11 +325,20 @@ def extract_orcid_dois(account_info):
     }
 
     try:
-        response = requests.get(get_app_config("ORCID_MEMBER_URL") + account_info["orcid"] + "/works",
+        url = get_app_config("ORCID_MEMBER_URL") + \
+            account_info["orcid"] + "/works"
+        logging.error(f"Attempting API request to: {url}")
+        response = requests.get(url,
                                 headers=headers, verify=False)
+
+        # Log response details
+        logging.info(f"Response status code: {response.status_code}")
+        logging.info(f"Response body: {response.text}")
+
         response.raise_for_status()
     except requests.RequestException as e:
-        logging.exception("Error fetching ORCID works: %s", e)
+        logging.exception(
+            f"Error fetching ORCID works. Exception: {e}, Response status: {response.status_code if 'response' in locals() else 'N/A'}, Response text: {response.text if 'response' in locals() else 'N/A'}")
         raise exceptions.APIConnectionException(e)
 
     if response.status_code == 200:
