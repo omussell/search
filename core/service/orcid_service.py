@@ -322,34 +322,32 @@ def add_contributors(record, doi_record):
 
 
 def extract_orcid_dois(account_info):
-    """Get all the DOIs claimed by the user.
-    :param account_info: User ORCID account info
-    :return: List of extracted DOIs
-    """
     extracted_dois = []
-
     headers = {
         "Accept": "application/vnd.orcid+json",
         "Authorization": "Bearer " + account_info["access_token"],
     }
+    url = get_app_config("ORCID_MEMBER_URL") + account_info["orcid"] + "/works"
 
+    logging.error(f"Sending API request to: {url} with headers: {headers}")
     try:
-        url = get_app_config("ORCID_MEMBER_URL") + \
-            account_info["orcid"] + "/works"
-        logging.info(f"Sending API request to: {url}")
         response = requests.get(url, headers=headers, verify=False)
-
-        # Log response details
-        logging.info(
-            f"Received response with status code: {response.status_code}")
-        if response.content:
-            logging.debug(f"Response content: {response.content}")
-
-        response.raise_for_status()
-    except requests.RequestException as e:
         logging.error(
-            f"Error fetching ORCID works. Exception: {e}, Response status: {response.status_code if 'response' in locals() else 'N/A'}, Response text: {response.text if 'response' in locals() else 'N/A'}")
-        raise exceptions.APIConnectionException(e)
+            f"Received response: Status {response.status_code}, Headers: {response.headers}, Body: {response.text}")
+        response.raise_for_status()
+    except requests.exceptions.HTTPError as e:
+        if response.status_code == 404:
+            raise exceptions.OrcidAPINotFoundException(
+                f"ORCID API returned 404 for URL: {url}")
+        elif response.status_code == 401:
+            raise exceptions.OrcidAPIUnauthorizedException(
+                f"Unauthorized access to ORCID API for URL: {url}")
+        else:
+            raise exceptions.OrcidAPIException(
+                f"ORCID API returned error: {e}")
+    except requests.RequestException as e:
+        raise exceptions.OrcidAPIException(
+            f"Error communicating with ORCID API: {e}")
 
     if response.status_code == 200:
         try:
@@ -357,7 +355,7 @@ def extract_orcid_dois(account_info):
 
             if "group" in res_json:
                 works = res_json["group"]
-                logging.info(f"Processing {len(works)} work entries")
+                logging.error(f"Processing {len(works)} work entries")
 
                 for work_loc in works:
                     if "external-ids" in work_loc:
@@ -375,14 +373,14 @@ def extract_orcid_dois(account_info):
                                     logging.warning(
                                         f"Malformed DOI data encountered: {e}")
             else:
-                logging.warning("No 'group' field in response JSON")
+                logging.error("No 'group' field in response JSON")
         except ValueError as e:
             logging.error(f"Error parsing JSON response: {e}")
     else:
         logging.error(
             f"API returns error. Status Code: {response.status_code} - Message: {response.text}")
 
-    logging.info(f"Extracted {len(extracted_dois)} DOIs")
+    logging.error(f"Extracted {len(extracted_dois)} DOIs")
     return extracted_dois
 
 

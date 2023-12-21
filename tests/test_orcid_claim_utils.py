@@ -362,7 +362,7 @@ def test_extract_orcid_dois_api_failure(mock_requests_get):
         "API request failed")
     account_info = {"access_token": "token123", "orcid": "0000-0000-0000-0000"}
 
-    with pytest.raises(exceptions.APIConnectionException):
+    with pytest.raises(exceptions.OrcidAPIException):
         extract_orcid_dois(account_info)
 
 
@@ -402,27 +402,29 @@ def test_extract_orcid_dois_non_200_response(mock_requests_get):
     mock_response = MagicMock()
     mock_response.status_code = 404
     mock_response.text = "Not Found"
+    # Simulate raise_for_status behavior
+    mock_response.raise_for_status.side_effect = requests.exceptions.HTTPError()
     mock_requests_get.return_value = mock_response
     account_info = {"access_token": "token123", "orcid": "0000-0000-0000-0000"}
 
-    with patch('logging.error') as mock_logging_error:
+    # Expect OrcidAPINotFoundException
+    with pytest.raises(exceptions.OrcidAPINotFoundException):
         extract_orcid_dois(account_info)
-        expected_error_message = "API returns error. Status Code: 404 - Message: Not Found"
-        mock_logging_error.assert_called_with(expected_error_message)
 
 
 def test_extract_orcid_dois_authentication_issue(mock_requests_get):
     mock_response = MagicMock()
     mock_response.status_code = 401
     mock_response.text = "Unauthorized"
+    # Simulate raise_for_status behavior
+    mock_response.raise_for_status.side_effect = requests.exceptions.HTTPError()
     mock_requests_get.return_value = mock_response
     account_info = {"access_token": "expired_token",
                     "orcid": "0000-0000-0000-0000"}
 
-    with patch('logging.error') as mock_logging_error:
+    # Expect OrcidAPIUnauthorizedException
+    with pytest.raises(exceptions.OrcidAPIUnauthorizedException):
         extract_orcid_dois(account_info)
-        expected_error_message = "API returns error. Status Code: 401 - Message: Unauthorized"
-        mock_logging_error.assert_called_with(expected_error_message)
 
 
 def test_create_orcid_claim_json_with_citation():
