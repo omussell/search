@@ -1,0 +1,402 @@
+{
+    "status": "ok",
+    "message-type": "work",
+    "message-version": "1.0.0",
+    "message": {
+        "indexed": {
+            "date-parts": [
+                [
+                    2022,
+                    4,
+                    2
+                ]
+            ],
+            "date-time": "2022-04-02T01:52:49Z",
+            "timestamp": 1648864369152
+        },
+        "update-to": [
+            {
+                "updated": {
+                    "date-parts": [
+                        [
+                            2018,
+                            1,
+                            1
+                        ]
+                    ],
+                    "date-time": "2018-01-01T00:00:00Z",
+                    "timestamp": 1514764800000
+                },
+                "DOI": "10.5555/12345678",
+                "type": "corrigendum",
+                "label": "Corrigendum"
+            }
+        ],
+        "reference-count": 1,
+        "publisher": "Test accounts",
+        "issue": "11",
+        "license": [
+            {
+                "start": {
+                    "date-parts": [
+                        [
+                            2011,
+                            11,
+                            21
+                        ]
+                    ],
+                    "date-time": "2011-11-21T00:00:00Z",
+                    "timestamp": 1321833600000
+                },
+                "content-version": "tdm",
+                "delay-in-days": 1195,
+                "URL": "http://psychoceramicsproprietrylicenseV1.com"
+            },
+            {
+                "start": {
+                    "date-parts": [
+                        [
+                            2011,
+                            11,
+                            21
+                        ]
+                    ],
+                    "date-time": "2011-11-21T00:00:00Z",
+                    "timestamp": 1321833600000
+                },
+                "content-version": "vor",
+                "delay-in-days": 1195,
+                "URL": "http://psychoceramicsproprietrylicenseV1.com"
+            },
+            {
+                "start": {
+                    "date-parts": [
+                        [
+                            2011,
+                            11,
+                            21
+                        ]
+                    ],
+                    "date-time": "2011-11-21T00:00:00Z",
+                    "timestamp": 1321833600000
+                },
+                "content-version": "am",
+                "delay-in-days": 1195,
+                "URL": "http://psychoceramicsproprietrylicenseV1.com"
+            },
+            {
+                "start": {
+                    "date-parts": [
+                        [
+                            2022,
+                            2,
+                            1
+                        ]
+                    ],
+                    "date-time": "2022-02-01T00:00:00Z",
+                    "timestamp": 1643673600000
+                },
+                "content-version": "stm-asf",
+                "delay-in-days": 4920,
+                "URL": "https://doi.org/10.15223/policy-001"
+            }
+        ],
+        "funder": [
+            {
+                "DOI": "10.13039/100000001",
+                "name": "National Science Foundation",
+                "doi-asserted-by": "publisher",
+                "award": [
+                    "12345678"
+                ]
+            },
+            {
+                "DOI": "10.13039/100006151",
+                "name": "Basic Energy Sciences, Office of Science, U.S. Department of Energy",
+                "doi-asserted-by": "publisher",
+                "award": [
+                    "12345679"
+                ]
+            }
+        ],
+        "content-domain": {
+            "domain": [
+                "psychoceramics.labs.crossref.org"
+            ],
+            "crossmark-restriction": false
+        },
+        "chair": [
+            {
+                "name": "Friends of Josiah Carberry",
+                "sequence": "additional",
+                "affiliation": []
+            }
+        ],
+        "short-container-title": [
+            "Journal of Psychoceramics"
+        ],
+        "published-print": {
+            "date-parts": [
+                [
+                    2008,
+                    8,
+                    14
+                ]
+            ]
+        },
+        "abstract": "<jats:p>The characteristic theme of the works of Stone is the bridge between culture and society. Several narratives concerning the fatal !aw, and subsequent dialectic, of semioticist class may be found. Thus, Debord uses the term ‘the subtextual paradigm of consensus’ to denote a cultural paradox. The subject is interpolated into a neocultural discourse that includes sexuality as a totality. But Marx’s critique of prepatriarchialist nihilism states that consciousness is capable of signi\"cance. The main theme of Dietrich’s[1]model of cultural discourse is not construction, but neoconstruction. Thus, any number of narratives concerning the textual paradigm of narrative exist. Pretextual cultural theory suggests that context must come from the collective unconscious.</jats:p>",
+        "DOI": "10.5555/12345678",
+        "type": "journal-article",
+        "created": {
+            "date-parts": [
+                [
+                    2011,
+                    11,
+                    9
+                ]
+            ],
+            "date-time": "2011-11-09T14:42:05Z",
+            "timestamp": 1320849725000
+        },
+        "page": "1-3",
+        "update-policy": "http://dx.doi.org/10.5555/something",
+        "source": "Crossref",
+        "is-referenced-by-count": 3,
+        "title": [
+            "Toward a Unified Theory of High-Energy Metaphysics: Silly String Theory"
+        ],
+        "prefix": "10.5555",
+        "volume": "5",
+        "clinical-trial-number": [
+            {
+                "clinical-trial-number": "isrctn12345",
+                "registry": "10.18810/isrctn"
+            }
+        ],
+        "author": [
+            {
+                "ORCID": "http://orcid.org/0000-0002-1825-0097",
+                "authenticated-orcid": false,
+                "suffix": "Jr.",
+                "given": "Josiah",
+                "family": "Carberry",
+                "sequence": "first",
+                "affiliation": [
+                    {
+                        "name": "Department of Psychoceramics, Brown University"
+                    }
+                ]
+            }
+        ],
+        "member": "7822",
+        "published-online": {
+            "date-parts": [
+                [
+                    2008,
+                    8,
+                    13
+                ]
+            ]
+        },
+        "reference": [
+            {
+                "key": "ref0",
+                "doi-asserted-by": "publisher",
+                "DOI": "10.37717/220020589"
+            }
+        ],
+        "container-title": [
+            "Journal of Psychoceramics"
+        ],
+        "original-title": [],
+        "language": "en",
+        "link": [
+            {
+                "URL": "http://psychoceramics.labs.crossref.org/10.5555-12345678.html",
+                "content-type": "unspecified",
+                "content-version": "vor",
+                "intended-application": "similarity-checking"
+            }
+        ],
+        "deposited": {
+            "date-parts": [
+                [
+                    2022,
+                    3,
+                    13
+                ]
+            ],
+            "date-time": "2022-03-13T11:15:56Z",
+            "timestamp": 1647170156000
+        },
+        "score": 1,
+        "resource": {
+            "primary": {
+                "URL": "https://sandbox.publicknowledgeproject.org/index.php/jpc/article/view/497"
+            }
+        },
+        "subtitle": [],
+        "short-title": [],
+        "issued": {
+            "date-parts": [
+                [
+                    2008,
+                    8,
+                    13
+                ]
+            ]
+        },
+        "references-count": 1,
+        "journal-issue": {
+            "issue": "11",
+            "published-online": {
+                "date-parts": [
+                    [
+                        2008,
+                        2,
+                        29
+                    ]
+                ]
+            },
+            "published-print": {
+                "date-parts": [
+                    [
+                        2008,
+                        2,
+                        29
+                    ]
+                ]
+            }
+        },
+        "URL": "http://dx.doi.org/10.5555/12345678",
+        "archive": [
+            "CLOCKSS"
+        ],
+        "relation": {
+            "is-reply-to": [
+                {
+                    "id-type": "doi",
+                    "id": "10.5555/24242424x",
+                    "asserted-by": "subject"
+                }
+            ]
+        },
+        "ISSN": [
+            "0264-3561"
+        ],
+        "issn-type": [
+            {
+                "value": "0264-3561",
+                "type": "electronic"
+            }
+        ],
+        "published": {
+            "date-parts": [
+                [
+                    2008,
+                    8,
+                    13
+                ]
+            ]
+        },
+        "assertion": [
+            {
+                "URL": "http://orcid.org/0000-0002-1825-0097",
+                "order": 0,
+                "name": "orcid",
+                "label": "ORCID",
+                "explanation": {
+                    "URL": "IDs for Or"
+                }
+            },
+            {
+                "value": "2012-07-24",
+                "order": 0,
+                "name": "received",
+                "label": "Received",
+                "group": {
+                    "name": "publication_history",
+                    "label": "Publication History"
+                }
+            },
+            {
+                "value": "2012-08-29",
+                "order": 1,
+                "name": "accepted",
+                "label": "Accepted",
+                "group": {
+                    "name": "publication_history",
+                    "label": "Publication History"
+                }
+            },
+            {
+                "value": "2012-09-26",
+                "order": 2,
+                "name": "published_online",
+                "label": "Published Online",
+                "group": {
+                    "name": "publication_history",
+                    "label": "Publication History"
+                }
+            },
+            {
+                "value": "2012-10-27",
+                "order": 3,
+                "name": "published_print",
+                "label": "Published Print",
+                "group": {
+                    "name": "publication_history",
+                    "label": "Publication History"
+                }
+            },
+            {
+                "URL": "http://psychoceramics.labs.crossref.org/10.5555-12345678.html",
+                "order": 0,
+                "name": "peer_reviewed",
+                "label": "Peer reviewed",
+                "explanation": {
+                    "URL": "thrice"
+                },
+                "group": {
+                    "name": "peer_review",
+                    "label": "Peer review"
+                }
+            },
+            {
+                "URL": "http://www.silly-string.com/silly-info/index.cfm",
+                "order": 0,
+                "name": "supplementary_Material",
+                "label": "Supplementary Material",
+                "explanation": {
+                    "URL": "Helpful Silly String resource"
+                }
+            },
+            {
+                "URL": "http://psychoceramics.labs.crossref.org/10.5555-12345678.html",
+                "order": 0,
+                "name": "licensing",
+                "label": "Licensing Information",
+                "explanation": {
+                    "URL": "Complicated license information available"
+                },
+                "group": {
+                    "name": "copyright_licensing",
+                    "label": "Copyright & Licensing"
+                }
+            },
+            {
+                "URL": "http://psychoceramics.labs.crossref.org/10.5555-12345678.html",
+                "order": 1,
+                "name": "copyright_statement",
+                "label": "Copyright Statement",
+                "explanation": {
+                    "URL": "Lorem Copyrightsum"
+                },
+                "group": {
+                    "name": "copyright_licensing",
+                    "label": "Copyright & Licensing"
+                }
+            }
+        ]
+    }
+}

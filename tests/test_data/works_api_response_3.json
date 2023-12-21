@@ -1,0 +1,231 @@
+{
+  "status": "ok",
+  "message-type": "work",
+  "message-version": "1.0.0",
+  "message": {
+    "indexed": {
+      "date-parts": [
+        [
+          2023,
+          4,
+          25
+        ]
+      ],
+      "date-time": "2023-04-25T12:32:48Z",
+      "timestamp": 1682425968845
+    },
+    "reference-count": 0,
+    "publisher": "World Scientific",
+    "isbn-type": [
+      {
+        "value": "9789811204548",
+        "type": "print"
+      },
+      {
+        "value": "9789811204555",
+        "type": "electronic"
+      }
+    ],
+    "content-domain": {
+      "domain": [],
+      "crossmark-restriction": false
+    },
+    "short-container-title": [],
+    "published-print": {
+      "date-parts": [
+        [
+          2020,
+          5
+        ]
+      ]
+    },
+    "DOI": "10.1142/11389-vol1",
+    "type": "book",
+    "created": {
+      "date-parts": [
+        [
+          2020,
+          3,
+          3
+        ]
+      ],
+      "date-time": "2020-03-03T06:11:11Z",
+      "timestamp": 1583215871000
+    },
+    "source": "Crossref",
+    "is-referenced-by-count": 3,
+    "title": [
+      "Handbook on Big Data and Machine Learning in the Physical Sciences"
+    ],
+    "prefix": "10.1142",
+    "author": [
+      {
+        "given": "Sergei V",
+        "family": "Kalinin",
+        "sequence": "first",
+        "affiliation": [
+          {
+            "name": "Oak Ridge National LaboratoryUSA"
+          }
+        ]
+      },
+      {
+        "given": "Ian",
+        "family": "Foster",
+        "sequence": "additional",
+        "affiliation": [
+          {
+            "name": "Argonne National LaboratoryUSA"
+          },
+          {
+            "name": "University of ChicagoUSA"
+          }
+        ]
+      },
+      {
+        "given": "Surya",
+        "family": "Kalidindi",
+        "sequence": "additional",
+        "affiliation": [
+          {
+            "name": "GaTechUSA"
+          }
+        ]
+      },
+      {
+        "given": "Sergei V",
+        "family": "Kalinin",
+        "sequence": "additional",
+        "affiliation": [
+          {
+            "name": "Oak Ridge National LaboratoryUSA"
+          }
+        ]
+      },
+      {
+        "given": "Turab",
+        "family": "Lookman",
+        "sequence": "additional",
+        "affiliation": [
+          {
+            "name": "Los Alamos National LaboratoryUSA"
+          }
+        ]
+      },
+      {
+        "given": "Kerstin Kleese",
+        "family": "van Dam",
+        "sequence": "additional",
+        "affiliation": [
+          {
+            "name": "Brookhaven National LaboratoryUSA"
+          }
+        ]
+      },
+      {
+        "given": "Kevin G",
+        "family": "Yager",
+        "sequence": "additional",
+        "affiliation": [
+          {
+            "name": "Brookhaven National LaboratoryUSA"
+          }
+        ]
+      },
+      {
+        "given": "Stuart I",
+        "family": "Campbell",
+        "sequence": "additional",
+        "affiliation": [
+          {
+            "name": "Brookhaven National LaboratoryUSA"
+          }
+        ]
+      },
+      {
+        "given": "Richard",
+        "family": "Farnsworth",
+        "sequence": "additional",
+        "affiliation": [
+          {
+            "name": "Brookhaven National LaboratoryUSA"
+          }
+        ]
+      },
+      {
+        "given": "Maartje",
+        "family": "van Dam",
+        "sequence": "additional",
+        "affiliation": [
+          {
+            "name": "Brookhaven National LaboratoryUSA"
+          }
+        ]
+      }
+    ],
+    "member": "219",
+    "published-online": {
+      "date-parts": [
+        [
+          2020,
+          3,
+          2
+        ]
+      ]
+    },
+    "container-title": [
+      "Handbook on Big Data and Machine Learning in the Physical Sciences"
+    ],
+    "original-title": [],
+    "deposited": {
+      "date-parts": [
+        [
+          2020,
+          8,
+          6
+        ]
+      ],
+      "date-time": "2020-08-06T11:54:37Z",
+      "timestamp": 1596714877000
+    },
+    "score": 1,
+    "resource": {
+      "primary": {
+        "URL": "https://www.worldscientific.com/worldscibooks/10.1142/11389-vol1"
+      }
+    },
+    "subtitle": [
+      "Volume 1: Big Data Methods in Experimental Materials Discovery"
+    ],
+    "short-title": [],
+    "issued": {
+      "date-parts": [
+        [
+          2020,
+          3,
+          2
+        ]
+      ]
+    },
+    "ISBN": [
+      "9789811204548",
+      "9789811204555"
+    ],
+    "references-count": 0,
+    "alternative-id": [
+      "10.1142/11389-vol1",
+      "10.1142/11389"
+    ],
+    "URL": "http://dx.doi.org/10.1142/11389-vol1",
+    "relation": {},
+    "published": {
+      "date-parts": [
+        [
+          2020,
+          3,
+          2
+        ]
+      ]
+    }
+  }
+}
