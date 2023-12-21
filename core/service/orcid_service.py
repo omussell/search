@@ -2,6 +2,7 @@ import json
 import logging
 import requests
 from core import exceptions
+from core.constants import WORKS_API_URL
 from core.utils import DOIRecordParser, get_app_config
 from datetime import datetime
 
@@ -124,7 +125,7 @@ def add_pub_date(record, doi_record):
 
 def fetch_citation_bibtex(doi):
     # Fetch citation data in BibTeX format
-    response = requests.get(f"https://api.crossref.org/v1/works/{doi}/transform?mailto={get_app_config('API_MAILTO')}",
+    response = requests.get(f"{WORKS_API_URL}/{doi}/transform?mailto={get_app_config('API_MAILTO')}",
                             headers={'Accept': 'application/x-bibtex'})
     if response.status_code == 200:
         return response.text
