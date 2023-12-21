@@ -1,128 +1,124 @@
 {
-  "citation": {
-    "citation-type": "bibtex",
-    "citation-value": " @article{Allen_2010, title={Dietary Supplementation with Lactobacilli and Bifidobacteria Is Well Tolerated and Not Associated with Adverse Events during Late Pregnancy and Early Infancy}, volume={140}, ISSN={0022-3166}, url={http://dx.doi.org/10.3945/jn.109.117093}, DOI={10.3945/jn.109.117093}, number={3}, journal={The Journal of Nutrition}, publisher={Elsevier BV}, author={Allen, Stephen J. and Jordan, Susan and Storey, Melanie and Thornton, Catherine A. and Gravenor, Michael and Garaiova, Iveta and Plummer, Susan F. and Wang, Duolao and Morgan, Gareth}, year={2010}, month=mar, pages={483–488} }\n"
-  },
-  "external-ids": {
-    "external-id": [
-      {
-        "external-id-type": "doi",
-        "external-id-value": "10.3945/jn.109.117093",
-        "external-id-url": {
-          "value": "http://dx.doi.org/10.3945/jn.109.117093"
-        },
-        "external-id-relationship": "self"
-      },
-      {
-        "external-id-type": "issn",
-        "external-id-value": "0022-3166",
-        "external-id-relationship": "part-of"
-      }
-    ]
-  },
-  "title": {
-    "title": {
-      "value": [
-        "Dietary Supplementation with Lactobacilli and Bifidobacteria Is Well Tolerated and Not Associated with Adverse Events during Late Pregnancy and Early Infancy"
-      ]
-    }
-  },
-  "journal-title": {
-    "value": [
-      "The Journal of Nutrition"
-    ]
-  },
-  "contributors": {
-    "contributor": [
-      {
-        "credit-name": {
-          "value": "Allen, Stephen J."
-        },
-        "contributor-attributes": {
-          "contributor-role": "author",
-          "contributor-sequence": "first"
-        }
-      },
-      {
-        "credit-name": {
-          "value": "Jordan, Susan"
-        },
-        "contributor-attributes": {
-          "contributor-role": "author",
-          "contributor-sequence": "additional"
-        }
-      },
-      {
-        "credit-name": {
-          "value": "Storey, Melanie"
-        },
-        "contributor-attributes": {
-          "contributor-role": "author",
-          "contributor-sequence": "additional"
-        }
-      },
-      {
-        "credit-name": {
-          "value": "Thornton, Catherine A."
-        },
-        "contributor-attributes": {
-          "contributor-role": "author",
-          "contributor-sequence": "additional"
-        }
-      },
-      {
-        "credit-name": {
-          "value": "Gravenor, Michael"
-        },
-        "contributor-attributes": {
-          "contributor-role": "author",
-          "contributor-sequence": "additional"
-        }
-      },
-      {
-        "credit-name": {
-          "value": "Garaiova, Iveta"
-        },
-        "contributor-attributes": {
-          "contributor-role": "author",
-          "contributor-sequence": "additional"
-        }
-      },
-      {
-        "credit-name": {
-          "value": "Plummer, Susan F."
-        },
-        "contributor-attributes": {
-          "contributor-role": "author",
-          "contributor-sequence": "additional"
-        }
-      },
-      {
-        "credit-name": {
-          "value": "Wang, Duolao"
-        },
-        "contributor-attributes": {
-          "contributor-role": "author",
-          "contributor-sequence": "additional"
-        }
-      },
-      {
-        "credit-name": {
-          "value": "Morgan, Gareth"
-        },
-        "contributor-attributes": {
-          "contributor-role": "author",
-          "contributor-sequence": "additional"
-        }
-      }
-    ]
-  },
-  "publication-date": {
-    "year": {
-      "value": "2010"
+    "citation": {
+        "citation-type": "bibtex",
+        "citation-value": " @article{Allen_2010, title={Dietary Supplementation with Lactobacilli and Bifidobacteria Is Well Tolerated and Not Associated with Adverse Events during Late Pregnancy and Early Infancy}, volume={140}, ISSN={0022-3166}, url={http://dx.doi.org/10.3945/jn.109.117093}, DOI={10.3945/jn.109.117093}, number={3}, journal={The Journal of Nutrition}, publisher={Elsevier BV}, author={Allen, Stephen J. and Jordan, Susan and Storey, Melanie and Thornton, Catherine A. and Gravenor, Michael and Garaiova, Iveta and Plummer, Susan F. and Wang, Duolao and Morgan, Gareth}, year={2010}, month=mar, pages={483\u2013488} }\n"
     },
-    "month": {
-      "value": "03"
+    "external-ids": {
+        "external-id": [
+            {
+                "external-id-type": "doi",
+                "external-id-value": "10.3945/jn.109.117093",
+                "external-id-url": {
+                    "value": "http://dx.doi.org/10.3945/jn.109.117093"
+                },
+                "external-id-relationship": "self"
+            },
+            {
+                "external-id-type": "issn",
+                "external-id-value": "0022-3166",
+                "external-id-relationship": "part-of"
+            }
+        ]
+    },
+    "title": {
+        "title": {
+            "value": "Dietary Supplementation with Lactobacilli and Bifidobacteria Is Well Tolerated and Not Associated with Adverse Events during Late Pregnancy and Early Infancy"
+        }
+    },
+    "journal-title": {
+        "value": "The Journal of Nutrition"
+    },
+    "contributors": {
+        "contributor": [
+            {
+                "credit-name": {
+                    "value": "Allen, Stephen J."
+                },
+                "contributor-attributes": {
+                    "contributor-role": "author",
+                    "contributor-sequence": "first"
+                }
+            },
+            {
+                "credit-name": {
+                    "value": "Jordan, Susan"
+                },
+                "contributor-attributes": {
+                    "contributor-role": "author",
+                    "contributor-sequence": "additional"
+                }
+            },
+            {
+                "credit-name": {
+                    "value": "Storey, Melanie"
+                },
+                "contributor-attributes": {
+                    "contributor-role": "author",
+                    "contributor-sequence": "additional"
+                }
+            },
+            {
+                "credit-name": {
+                    "value": "Thornton, Catherine A."
+                },
+                "contributor-attributes": {
+                    "contributor-role": "author",
+                    "contributor-sequence": "additional"
+                }
+            },
+            {
+                "credit-name": {
+                    "value": "Gravenor, Michael"
+                },
+                "contributor-attributes": {
+                    "contributor-role": "author",
+                    "contributor-sequence": "additional"
+                }
+            },
+            {
+                "credit-name": {
+                    "value": "Garaiova, Iveta"
+                },
+                "contributor-attributes": {
+                    "contributor-role": "author",
+                    "contributor-sequence": "additional"
+                }
+            },
+            {
+                "credit-name": {
+                    "value": "Plummer, Susan F."
+                },
+                "contributor-attributes": {
+                    "contributor-role": "author",
+                    "contributor-sequence": "additional"
+                }
+            },
+            {
+                "credit-name": {
+                    "value": "Wang, Duolao"
+                },
+                "contributor-attributes": {
+                    "contributor-role": "author",
+                    "contributor-sequence": "additional"
+                }
+            },
+            {
+                "credit-name": {
+                    "value": "Morgan, Gareth"
+                },
+                "contributor-attributes": {
+                    "contributor-role": "author",
+                    "contributor-sequence": "additional"
+                }
+            }
+        ]
+    },
+    "publication-date": {
+        "year": {
+            "value": "2010"
+        },
+        "month": {
+            "value": "03"
+        }
     }
-  }
 }
