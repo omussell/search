@@ -88,14 +88,24 @@ def claim():
     signed_in, orcid_info, session_expired = utils.signed_in_info()
 
     # Log the incoming Flask request details
-    logging.info(f"Incoming request for DOI claim with args: {request.args}")
+    logging.error(f"Incoming request for DOI claim with args: {request.args}")
 
     if signed_in and "doi" in request.args:
         doi = request.args["doi"]
-        logging.info(f"Received claim request for DOI {doi}")
+        logging.error(f"Received claim request for DOI {doi}")
 
         if orcid_info:
-            extracted_dois = extract_orcid_dois(orcid_info)
+            try:
+                extracted_dois = extract_orcid_dois(orcid_info)
+            except exceptions.OrcidAPINotFoundException as e:
+                logging.error(str(e))
+                return {"status": "error", "message": "DOI not found"}, 404
+            except exceptions.OrcidAPIUnauthorizedException as e:
+                logging.error(str(e))
+                return {"status": "error", "message": "Unauthorized access"}, 401
+            except exceptions.OrcidAPIException as e:
+                logging.error(str(e))
+                return {"status": "error", "message": "ORCID API error"}, 500
 
             if doi.casefold() in extracted_dois:
                 status = "ok"
@@ -103,11 +113,11 @@ def claim():
                 url = constants.WORKS_API_URL + "/" + doi
                 try:
                     # Log external API request details
-                    logging.info(f"Making GET request to {url}")
+                    logging.error(f"Making GET request to {url}")
                     res = requests.get(url, timeout=constants.REQUEST_TIME_OUT)
 
                     # Log response details
-                    logging.info(
+                    logging.error(
                         f"Response from {url}: Status {res.status_code}, Body: {res.text}")
 
                 except Exception as e:
@@ -116,7 +126,6 @@ def claim():
                     raise exceptions.APIConnectionException(e)
 
                 if res.status_code == 200:
-                    # Processing response...
                     doi_record = None
                     response_json = res.json()
                     if response_json["message"]:
@@ -135,14 +144,14 @@ def claim():
                         }
 
                         # Log the POST request
-                        logging.info(
+                        logging.error(
                             f"Making POST request to {post_url} with headers {headers} and payload {json_record}")
 
                         response = requests.post(
                             post_url, data=json_record, headers=headers, verify=False)
 
                         # Log response details
-                        logging.info(
+                        logging.error(
                             f"Response from POST to {post_url}: Status {response.status_code}, Body: {response.text}")
 
                     except Exception as e:
