@@ -125,8 +125,11 @@ def add_pub_date(record, doi_record):
 
 def fetch_citation_bibtex(doi):
     # Fetch citation data in BibTeX format
-    response = requests.get(f"{WORKS_API_URL}/{doi}/transform?mailto={get_app_config('API_MAILTO')}",
+    url = f"{WORKS_API_URL}/{doi}/transform?mailto={get_app_config('API_MAILTO')}"
+    response = requests.get(url,
                             headers={'Accept': 'application/x-bibtex'})
+    logging.error(
+        f"Response from {url}: Status {response.status_code}, Body: {response.text}")
     if response.status_code == 200:
         return response.text
     return None
@@ -394,7 +397,7 @@ def create_orcid_claim_json(doi_record, return_dict=False):
 
         # Initialize an empty ORCID record
         orcid_record = {}
-
+        logging.error(f"Fetching citation for {doi_record['DOI']}")
         # Fetch and add citation
         citation_bibtex = fetch_citation_bibtex(doi_record['DOI'])
         if citation_bibtex:
@@ -403,23 +406,40 @@ def create_orcid_claim_json(doi_record, return_dict=False):
                 'citation-value': citation_bibtex
             }
 
+        logging.error(
+            f"Fetched citation for {doi_record['DOI']} Record {orcid_record}")
         # Add external IDs (DOI, ISSN, ISBN)
+        logging.error(f"Adding external IDs for {doi_record['DOI']}")
         add_external_ids(orcid_record, doi_record)
-
+        logging.error(
+            f"Internal IDs added for {doi_record['DOI']} Record {orcid_record}")
         # Add titles (title, subtitle, journal title)
+        logging.error(f"Adding title for {doi_record['DOI']}")
         add_titles(orcid_record, doi_record)
-
+        logging.error(
+            f"Titles added for {doi_record['DOI']} Record {orcid_record}")
         # Add contributors (authors, editors, etc.)
+        logging.error(f"Adding contributors for {doi_record['DOI']}")
         add_contributors(orcid_record, doi_record)
+        logging.error(
+            f"Added contributors for {doi_record['DOI']} Record {orcid_record}")
 
         # Add publication date
+        logging.error(
+            f"Adding pub date for {doi_record['DOI']} Record {orcid_record}")
         add_pub_date(orcid_record, doi_record)
+        logging.error(
+            f"Added pub date for {doi_record['DOI']} Record {orcid_record}")
 
         if return_dict:
             return orcid_record
 
         # Convert the ORCID record to JSON format
-        return json.dumps(orcid_record)
+        claim_json = json.dumps(orcid_record)
+        logging.error(
+            f"Claim created for {doi_record['DOI']} Record {claim_json}")
+
+        return claim_json
 
     except Exception as e:
         logging.error(f"Error in creating ORCID JSON item: {e}", exc_info=True)
