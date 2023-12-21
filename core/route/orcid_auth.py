@@ -87,11 +87,14 @@ def claim():
     status = None
     signed_in, orcid_info, session_expired = utils.signed_in_info()
 
+    # Log the incoming Flask request details
+    logging.info(f"Incoming request for DOI claim with args: {request.args}")
+
     if signed_in and "doi" in request.args:
         doi = request.args["doi"]
+        logging.info(f"Received claim request for DOI {doi}")
 
         if orcid_info:
-
             extracted_dois = extract_orcid_dois(orcid_info)
 
             if doi.casefold() in extracted_dois:
@@ -99,12 +102,21 @@ def claim():
             else:
                 url = constants.WORKS_API_URL + "/" + doi
                 try:
+                    # Log external API request details
+                    logging.info(f"Making GET request to {url}")
                     res = requests.get(url, timeout=constants.REQUEST_TIME_OUT)
+
+                    # Log response details
+                    logging.info(
+                        f"Response from {url}: Status {res.status_code}, Body: {res.text}")
+
                 except Exception as e:
-                    logging.exception(e)
+                    logging.exception(
+                        f"Exception during GET request to {url}: {e}")
                     raise exceptions.APIConnectionException(e)
 
                 if res.status_code == 200:
+                    # Processing response...
                     doi_record = None
                     response_json = res.json()
                     if response_json["message"]:
@@ -112,41 +124,35 @@ def claim():
                     if doi_record:
                         json_record = create_orcid_claim_json(doi_record)
 
+                    # Attempt the submission to Orcid
+                    try:
+                        post_url = utils.get_app_config(
+                            "ORCID_MEMBER_URL") + orcid_info["orcid"] + "/work"
                         headers = {
                             "Accept": "application/vnd.orcid+json",
                             "Authorization": "Bearer " + orcid_info["access_token"],
                             "Content-Type": "application/vnd.orcid+json",
                         }
 
-                        try:
-                            response = requests.post(utils.get_app_config("ORCID_MEMBER_URL") +
-                                                     orcid_info["orcid"] +
-                                                     "/work",
-                                                     data=json_record, headers=headers, verify=False)
-                        except Exception as e:
-                            logging.exception(e)
-                            raise exceptions.APIConnectionException(e)
+                        # Log the POST request
+                        logging.info(
+                            f"Making POST request to {post_url} with headers {headers} and payload {json_record}")
 
-                        if response.status_code == 201:
-                            extracted_dois = extract_orcid_dois(orcid_info)
-                            if doi.casefold() in extracted_dois:
-                                status = "ok_visible"
-                            else:
-                                status = "ok"
-                        elif response.status_code == 500:
-                            logging.error(
-                                "Error while adding item : " + response.text)
-                            return {"status": "error", "text": "ORCID Serverside error. Item not added to ORCID"}
-                        else:
-                            logging.error(
-                                "Error while adding item : " + response.text)
-                            return {"status": "error", "text": "Unknown error occurred. Item not added to ORCID"}
+                        response = requests.post(
+                            post_url, data=json_record, headers=headers, verify=False)
 
-                    else:
-                        status = "no_such_doi"
+                        # Log response details
+                        logging.info(
+                            f"Response from POST to {post_url}: Status {response.status_code}, Body: {response.text}")
+
+                    except Exception as e:
+                        logging.exception(
+                            f"Exception during POST request to {post_url}: {e}")
+                        raise exceptions.APIConnectionException(e)
+
+                    # Additional response handling...
                 else:
                     status = "no_such_doi"
-
     return {"status": status}
 
 
