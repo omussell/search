@@ -298,6 +298,7 @@ def add_contributors(record, doi_record):
                 given_name = contributor_info.get("given", "").strip()
                 family_name = contributor_info.get("family", "").strip()
                 credit_name = f"{family_name}, {given_name}".strip(', ')
+                orcid_id = ""
 
                 contributor = {"credit-name": {"value": credit_name}}
 
