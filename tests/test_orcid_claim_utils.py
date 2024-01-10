@@ -263,6 +263,33 @@ def test_add_contributors_with_institutional_author(api_response_4):
     assert first_contributor['contributor-attributes']['contributor-sequence'] == 'first'
 
 
+def test_add_external_ids_book_part_of_series(api_response_5):
+    record = {}
+    doi_record = json.loads(
+        api_response_5)["message"]
+    add_external_ids(record, doi_record)
+    print(record)
+
+    # Asserting the existence and correctness of the first external-id
+    first_id = record['external-ids']['external-id'][0]
+    assert first_id['external-id-type'] == 'doi'
+    assert first_id['external-id-value'] == '10.1007/978-3-658-24637-2'
+    assert first_id['external-id-url']['value'] == 'http://dx.doi.org/10.1007/978-3-658-24637-2'
+    assert first_id['external-id-relationship'] == 'self'
+
+    # Asserting the existence and correctness of the second external-id
+    second_id = record['external-ids']['external-id'][1]
+    assert second_id['external-id-type'] == 'isbn'
+    assert second_id['external-id-value'] == '9783658246372'
+    assert second_id['external-id-relationship'] == 'self'
+
+    # Asserting the existence and correctness of the third external-id
+    third_id = record['external-ids']['external-id'][2]
+    assert third_id['external-id-type'] == 'issn'
+    assert third_id['external-id-value'] == '2510-0955'
+    assert third_id['external-id-relationship'] == 'part-of'
+
+
 def test_add_contributors_with_author_and_editor():
     record = {}
     doi_record = {

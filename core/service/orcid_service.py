@@ -2,7 +2,7 @@ import json
 import logging
 import requests
 from core import exceptions
-from core.constants import WORKS_API_URL
+from core.constants import WORKS_API_URL, WORK_TYPES_ISBN_AS_CONTAINER, WORK_TYPES_ISSN_AS_CONTAINER
 from core.utils import DOIRecordParser, get_app_config
 from datetime import datetime
 
@@ -207,23 +207,27 @@ def pad_date_item(item):
 def add_external_ids(record, doi_record):
     """
     Adds external identifiers like DOI, ISBN, and ISSN to an ORCID claim record.
+    Modifies the way ISBNs and ISSNs are added based on work type.
 
     Args:
         record (dict): The ORCID claim record to which external IDs will be added.
         doi_record (dict): The DOI record containing external ID information.
+        work_type (str): The type of work, used to determine how ISBNs and ISSNs are handled.
 
     The function processes the following use cases:
         - Adds a DOI identifier if present in the DOI record.
-        - Adds ISBN and ISSN identifiers, preferring electronic over print versions.
+        - Adds ISBN and ISSN identifiers, considering whether they should be treated as container identifiers based on the work type.
         - Logs a warning if the DOI is missing.
     """
 
     # List to hold valid external IDs
     external_ids = []
 
+    # Get the Crossref work type
+    work_type = doi_record.get('type')
+
     # Add DOI to the record if present
     if "DOI" in doi_record and doi_record["DOI"]:
-        # Append DOI information to the external-id list
         external_ids.append({
             "external-id-type": "doi",
             "external-id-value": doi_record["DOI"],
@@ -231,17 +235,12 @@ def add_external_ids(record, doi_record):
             "external-id-relationship": "self"
         })
     else:
-        # Log a warning if DOI is missing
         logging.warning("DOI missing in record")
 
     # Process and add ISBN and ISSN
     for key, new_key in [('isbn-type', 'isbn'), ('issn-type', 'issn')]:
         if key in doi_record:
-            # Initialize variables for electronic and print IDs
-            electronic_id = None
-            print_id = None
-
-            # Iterate over each identifier and categorize as electronic or print
+            electronic_id, print_id = None, None
             for identifier in doi_record[key]:
                 if identifier['type'] == 'electronic':
                     electronic_id = identifier['value']
@@ -250,18 +249,24 @@ def add_external_ids(record, doi_record):
 
             # Choose electronic ID over print ID if available
             processed_id = electronic_id if electronic_id else print_id
+
+            # Check if the work type requires treating the identifier as a container
             if processed_id:
-                # Append the processed ID to the external-id list
+                if (new_key == 'isbn' and work_type in WORK_TYPES_ISBN_AS_CONTAINER) or \
+                   (new_key == 'issn' and work_type in WORK_TYPES_ISSN_AS_CONTAINER):
+                    relationship = "part-of"
+                else:
+                    relationship = "self"
+
                 external_ids.append({
                     "external-id-type": new_key.lower(),
                     "external-id-value": processed_id,
-                    "external-id-relationship": "part-of"
+                    "external-id-relationship": relationship
                 })
-    # Add external IDs to the record only if there are valid IDs
+
     if external_ids:
         record["external-ids"] = {"external-id": external_ids}
 
-    # Return the updated record
     return record
 
 

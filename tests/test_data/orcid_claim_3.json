@@ -17,7 +17,7 @@
             {
                 "external-id-type": "isbn",
                 "external-id-value": "9789811204555",
-                "external-id-relationship": "part-of"
+                "external-id-relationship": "self"
             }
         ]
     },
