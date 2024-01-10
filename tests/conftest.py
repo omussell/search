@@ -38,3 +38,13 @@ def api_response_2():
 @pytest.fixture
 def api_response_3():
     return load_test_data('works_api_response_3.json')
+
+
+@pytest.fixture  # Work with institutional author
+def api_response_4():
+    return load_test_data('works_api_response_4.json')
+
+
+@pytest.fixture  # Book that is part of a series with an ISSN
+def api_response_5():
+    return load_test_data('works_api_response_5.json')

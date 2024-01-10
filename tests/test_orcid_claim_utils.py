@@ -247,6 +247,46 @@ def test_add_titles_with_all_elements():
     assert record["journal-title"]["value"] == "Sample Journal"
 
 
+def test_add_contributors_with_institutional_author(api_response_4):
+    record = {}
+    doi_record = json.loads(
+        api_response_4)["message"]
+    add_contributors(record, doi_record)
+    first_contributor = record['contributors']['contributor'][0]
+
+    assert first_contributor[
+        'credit-name']['value'] == 'National Toxicology Program (NTP)'
+
+    assert first_contributor['contributor-attributes']['contributor-role'] == 'author'
+    assert first_contributor['contributor-attributes']['contributor-sequence'] == 'first'
+
+
+def test_add_external_ids_book_part_of_series(api_response_5):
+    record = {}
+    doi_record = json.loads(
+        api_response_5)["message"]
+    add_external_ids(record, doi_record)
+
+    # Check the DOI exists
+    first_id = record['external-ids']['external-id'][0]
+    assert first_id['external-id-type'] == 'doi'
+    assert first_id['external-id-value'] == '10.1007/978-3-658-24637-2'
+    assert first_id['external-id-url']['value'] == 'http://dx.doi.org/10.1007/978-3-658-24637-2'
+    assert first_id['external-id-relationship'] == 'self'
+
+    # Check the ISBN of the book is recorded as applying to the work itself
+    second_id = record['external-ids']['external-id'][1]
+    assert second_id['external-id-type'] == 'isbn'
+    assert second_id['external-id-value'] == '9783658246372'
+    assert second_id['external-id-relationship'] == 'self'
+
+    # Check the ISSN of the book series is recorded as the container of the book
+    third_id = record['external-ids']['external-id'][2]
+    assert third_id['external-id-type'] == 'issn'
+    assert third_id['external-id-value'] == '2510-0955'
+    assert third_id['external-id-relationship'] == 'part-of'
+
+
 def test_add_contributors_with_author_and_editor():
     record = {}
     doi_record = {
@@ -483,13 +523,18 @@ def test_add_pub_date(print_date, online_date, expected_year, expected_month, ex
 
 @pytest.mark.parametrize("internal_type, expected_orcid_type", [
     ('journal-article', 'journal-article'),
-    ('conference-paper', 'conference-paper'),
+    ('proceedings-article', 'conference-paper'),
     ('dissertation', 'dissertation'),
     ('report', 'report'),
     ('standards-and-policy', 'standards-and-policy'),
-    ('data-set', 'data-set'),
+    ('dataset', 'data-set'),
     ('book', 'book'),
     ('journal', 'journal-issue'),
+    ('book-chapter', 'book-chapter'),
+    ('edited-book', 'edited-book'),
+    ('peer-review', 'review'),
+    ('monograph', 'book'),
+    ('reference-book', 'book'),
     ('unknown-type', 'other'),  # Testing the default case
 ])
 def test_orcid_work_type(internal_type, expected_orcid_type):

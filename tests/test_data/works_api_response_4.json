@@ -1,0 +1,125 @@
+{
+  "status": "ok",
+  "message-type": "work",
+  "message-version": "1.0.0",
+  "message": {
+    "institution": [
+      {
+        "name": "National Institute of Environmental Health and Safety",
+        "acronym": [
+          "NIEHS"
+        ],
+        "place": [
+          "Durham, NC"
+        ],
+        "department": [
+          "National Toxicology Program (NTP)"
+        ]
+      }
+    ],
+    "indexed": {
+      "date-parts": [
+        [
+          2022,
+          3,
+          25
+        ]
+      ],
+      "date-time": "2022-03-25T11:58:54Z",
+      "timestamp": 1648209534092
+    },
+    "reference-count": 0,
+    "publisher": "NIEHS",
+    "content-domain": {
+      "domain": [],
+      "crossmark-restriction": false
+    },
+    "short-container-title": [],
+    "content-updated": {
+      "date-parts": [
+        [
+          2016,
+          12,
+          20
+        ]
+      ]
+    },
+    "published-print": {
+      "date-parts": [
+        [
+          2019,
+          7
+        ]
+      ]
+    },
+    "DOI": "10.22427/ntp-data-test-test-test",
+    "type": "dataset",
+    "created": {
+      "date-parts": [
+        [
+          2019,
+          7,
+          31
+        ]
+      ],
+      "date-time": "2019-07-31T13:59:37Z",
+      "timestamp": 1564581577000
+    },
+    "source": "Crossref",
+    "is-referenced-by-count": 1,
+    "title": [
+      "TEST TEST TEST TEST TEST TEST TEST TEST TEST TEST TEST TEST TEST TEST TEST TEST TEST TEST TEST TEST TEST TEST TEST TEST TEST TEST TEST TEST TEST TEST TEST TEST TEST TEST TEST TEST TEST TEST TEST TEST TEST TEST TEST TEST TEST TEST TEST TEST TEST TEST TEST TEST TEST TEST TEST TEST TEST TEST TEST TEST TEST TEST TEST TEST TEST TEST TEST TEST TEST TEST TEST TEST TEST TEST TEST TEST TEST TEST TEST TEST TEST TEST TEST TEST TEST TEST TEST TEST TEST TEST TEST TEST TEST TEST TEST TEST TEST TEST TEST TEST TEST TEST TEST TEST TEST TEST TEST TEST TEST TEST TEST TEST TEST TEST TEST TEST TEST TEST TEST TEST TEST TEST TEST TEST TEST TEST TEST TEST TEST TEST TEST TEST TEST TEST TEST TEST TEST TEST TEST TEST TEST TEST TEST TEST TEST TEST TEST TEST TEST TEST TEST TEST TEST TEST TEST TEST TEST TEST TEST TEST TEST TEST TEST TEST TEST TEST TEST TEST TEST TEST TEST TEST TEST TEST TEST TEST TEST TEST TEST TEST TEST TEST TEST TEST TEST TEST TEST TEST TEST TEST TEST TEST TEST TEST TEST TEST TEST TEST TEST TEST"
+    ],
+    "prefix": "10.22427",
+    "author": [
+      {
+        "name": "National Toxicology Program (NTP)",
+        "sequence": "first",
+        "affiliation": []
+      }
+    ],
+    "member": "9718",
+    "container-title": [
+      "Chemical Effects in Biological Systems (CEBS)"
+    ],
+    "original-title": [],
+    "deposited": {
+      "date-parts": [
+        [
+          2019,
+          7,
+          31
+        ]
+      ],
+      "date-time": "2019-07-31T13:59:38Z",
+      "timestamp": 1564581578000
+    },
+    "score": 1,
+    "resource": {
+      "primary": {
+        "URL": "https://manticore.niehs.nih.gov/cebssearch/"
+      }
+    },
+    "subtitle": [],
+    "short-title": [],
+    "issued": {
+      "date-parts": [
+        [
+          2019,
+          7
+        ]
+      ]
+    },
+    "references-count": 0,
+    "URL": "http://dx.doi.org/10.22427/ntp-data-test-test-test",
+    "relation": {},
+    "published": {
+      "date-parts": [
+        [
+          2019,
+          7
+        ]
+      ]
+    }
+  }
+}

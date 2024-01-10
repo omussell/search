@@ -62,3 +62,9 @@ ISSN = r"^\d{4}-\d{3}(\d|X|x){1}$"
 ISSN_REGEX = re.compile(ISSN, re.IGNORECASE)
 ORCID = r"^[0-9]{4}-[0-9]{4}-[0-9]{4}-\d{3}[\dX]$"
 ORCID_REGEX = re.compile(ORCID)
+
+# Work types
+WORK_TYPES_ISBN_AS_CONTAINER = ['book-chapter', 'book-section', 'book-part', 'dataset',
+                                'component', 'proceedings-article', 'journal-article', 'reference-entry', 'report-component']
+WORK_TYPES_ISSN_AS_CONTAINER = ['journal-article', 'journal-issue', 'journal-volume', 'proceedings-article', 'book', 'monograph', 'reference-book', 'reference-entry', 'edited-book', 'book-set',
+                                'book-track', 'proceedings', 'other', 'book-chapter', 'book-section', 'book-part', 'dataset', 'report', 'report-component', 'component', 'posted-content', 'standard', 'dissertation', 'peer-review']
