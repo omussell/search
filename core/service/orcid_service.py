@@ -13,13 +13,20 @@ def orcid_work_type(internal_work_type):
     """Map internal work type to ORCID work type."""
     mapping = {
         'journal-article': 'journal-article',
-        'conference-paper': 'conference-paper',
+        'proceedings-article': 'conference-paper',
         'dissertation': 'dissertation',
         'report': 'report',
         'standards-and-policy': 'standards-and-policy',
-        'data-set': 'data-set',
+        'dataset': 'data-set',
         'book': 'book',
-        'journal': 'journal-issue'
+        'journal': 'journal-issue',
+        'book-chapter': 'book-chapter',
+        'dissertation': 'dissertation',
+        'edited-book': 'edited-book',
+        'report': 'report',
+        'peer-review': 'review',
+        'monograph': 'book',
+        'reference-book': 'book'
     }
     return mapping.get(internal_work_type, 'other')
 
