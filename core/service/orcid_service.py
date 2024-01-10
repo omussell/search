@@ -300,6 +300,11 @@ def add_contributors(record, doi_record):
                 credit_name = f"{family_name}, {given_name}".strip(', ')
                 orcid_id = ""
 
+                if not credit_name:
+                    institution_name = contributor_info.get("name", "").strip()
+                    if institution_name:
+                        credit_name = institution_name
+
                 contributor = {"credit-name": {"value": credit_name}}
 
                 # Add contributor role and sequence if available

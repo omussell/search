@@ -247,6 +247,22 @@ def test_add_titles_with_all_elements():
     assert record["journal-title"]["value"] == "Sample Journal"
 
 
+def test_add_contributors_with_institutional_author(api_response_4):
+    record = {}
+    doi_record = json.loads(
+        api_response_4)["message"]
+    add_contributors(record, doi_record)
+    first_contributor = record['contributors']['contributor'][0]
+
+    # Assert the 'value' of 'credit-name' is as expected
+    assert first_contributor[
+        'credit-name']['value'] == 'National Toxicology Program (NTP)'
+
+    # Assert the 'contributor-role' and 'contributor-sequence' are as expected
+    assert first_contributor['contributor-attributes']['contributor-role'] == 'author'
+    assert first_contributor['contributor-attributes']['contributor-sequence'] == 'first'
+
+
 def test_add_contributors_with_author_and_editor():
     record = {}
     doi_record = {
