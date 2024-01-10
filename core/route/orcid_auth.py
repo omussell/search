@@ -88,12 +88,8 @@ def claim():
     status = None
     signed_in, orcid_info, session_expired = utils.signed_in_info()
 
-    # Log the incoming Flask request details
-    logging.error(f"Incoming request for DOI claim with args: {request.args}")
-
     if signed_in and "doi" in request.args:
         doi = request.args["doi"]
-        logging.error(f"Received claim request for DOI {doi}")
 
         if orcid_info:
             try:
@@ -113,14 +109,8 @@ def claim():
             else:
                 url = constants.WORKS_API_URL + "/" + doi
                 try:
-                    # Log external API request details
-                    logging.error(f"Making GET request to {url}")
                     res = requests.get(
                         url, timeout=constants.REQUEST_TIME_OUT, headers=API_HEADERS)
-
-                    # Log response details
-                    logging.error(
-                        f"Response from {url}: Status {res.status_code}, Body: {res.text}")
 
                 except Exception as e:
                     logging.exception(
@@ -145,16 +135,8 @@ def claim():
                             "Content-Type": "application/vnd.orcid+json",
                         }
 
-                        # Log the POST request
-                        logging.error(
-                            f"Making POST request to {post_url} with headers {headers} and payload {json_record}")
-
                         response = requests.post(
                             post_url, data=json_record, headers=headers, verify=False)
-
-                        # Log response details
-                        logging.error(
-                            f"Response from POST to {post_url}: Status {response.status_code}, Body: {response.text}")
 
                         if response.status_code == 201:
                             extracted_dois = extract_orcid_dois(orcid_info)
