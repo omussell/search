@@ -279,14 +279,13 @@ def get_query_string(request, category):
 def search_query(category, request):
     url, search_type = get_api_url(category, request)
     try:
-        logging.debug("Search URL : " + str(url))
-        res = requests.get(url, headers=API_HEADERS, timeout=constants.REQUEST_TIME_OUT)
-        logging.debug("Response Code : " + str(res.status_code))
+        res = requests.get(url, headers=API_HEADERS,
+                           timeout=constants.REQUEST_TIME_OUT)
     except Exception as e:
         raise exceptions.APIConnectionException(e)
-
     if res.status_code == 200:
-        page_number = request.args.get(get_page_parameter(), type=int, default=1)
+        page_number = request.args.get(
+            get_page_parameter(), type=int, default=1)
         max_results_to_display = constants.ROWS_PER_PAGE * 10
 
         # If page is greater than 10, show max limit message

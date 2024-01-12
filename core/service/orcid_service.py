@@ -138,8 +138,7 @@ def fetch_citation_bibtex(doi):
     headers = {**API_HEADERS, **{'Accept': 'application/x-bibtex'}}
     response = requests.get(url,
                             headers=headers)
-    logging.error(
-        f"Response from {url}: Status {response.status_code}, Body: {response.text}")
+
     if response.status_code == 200:
         return response.text
     return None
@@ -224,7 +223,6 @@ def add_external_ids(record, doi_record):
     The function processes the following use cases:
         - Adds a DOI identifier if present in the DOI record.
         - Adds ISBN and ISSN identifiers, considering whether they should be treated as container identifiers based on the work type.
-        - Logs a warning if the DOI is missing.
     """
 
     # List to hold valid external IDs
@@ -241,8 +239,6 @@ def add_external_ids(record, doi_record):
             "external-id-url": {"value": doi_record.get("URL", "")},
             "external-id-relationship": "self"
         })
-    else:
-        logging.warning("DOI missing in record")
 
     # Process and add ISBN and ISSN
     for key, new_key in [('isbn-type', 'isbn'), ('issn-type', 'issn')]:
@@ -353,11 +349,8 @@ def extract_orcid_dois(account_info):
     }
     url = get_app_config("ORCID_MEMBER_URL") + account_info["orcid"] + "/works"
 
-    logging.error(f"Sending API request to: {url} with headers: {headers}")
     try:
         response = requests.get(url, headers=headers, verify=False)
-        logging.error(
-            f"Received orcid api response: Status {response.status_code}, Headers: {response.headers}, Body: {response.text}")
         response.raise_for_status()
     except requests.exceptions.HTTPError as e:
         if response.status_code == 404:
@@ -379,7 +372,6 @@ def extract_orcid_dois(account_info):
 
             if "group" in res_json:
                 works = res_json["group"]
-                logging.error(f"Processing {len(works)} work entries")
 
                 for work_loc in works:
                     if "external-ids" in work_loc:
@@ -396,15 +388,12 @@ def extract_orcid_dois(account_info):
                                 except AttributeError as e:
                                     logging.warning(
                                         f"Malformed DOI data encountered: {e}")
-            else:
-                logging.error("No 'group' field in response JSON")
         except ValueError as e:
             logging.error(f"Error parsing JSON response: {e}")
     else:
         logging.error(
             f"API returns error. Status Code: {response.status_code} - Message: {response.text}")
 
-    logging.error(f"Extracted {len(extracted_dois)} DOIs")
     return extracted_dois
 
 
@@ -424,11 +413,7 @@ def create_orcid_claim_json(doi_record, return_dict=False):
 
         # Initialize an empty ORCID record
         orcid_record = {}
-        logging.error(f"Adding work type for {doi_record['DOI']}")
         add_work_type(orcid_record, doi_record)
-        logging.error(
-            f"Work type added for {doi_record['DOI']} Record {orcid_record}")
-        logging.error(f"Fetching citation for {doi_record['DOI']}")
         # Fetch and add citation
         citation_bibtex = fetch_citation_bibtex(doi_record['DOI'])
         if citation_bibtex:
@@ -437,38 +422,21 @@ def create_orcid_claim_json(doi_record, return_dict=False):
                 'citation-value': citation_bibtex
             }
 
-        logging.error(
-            f"Fetched citation for {doi_record['DOI']} Record {orcid_record}")
         # Add external IDs (DOI, ISSN, ISBN)
-        logging.error(f"Adding external IDs for {doi_record['DOI']}")
         add_external_ids(orcid_record, doi_record)
-        logging.error(
-            f"Internal IDs added for {doi_record['DOI']} Record {orcid_record}")
         # Add titles (title, subtitle, journal title)
-        logging.error(f"Adding title for {doi_record['DOI']}")
         add_titles(orcid_record, doi_record)
-        logging.error(
-            f"Titles added for {doi_record['DOI']} Record {orcid_record}")
         # Add contributors (authors, editors, etc.)
-        logging.error(f"Adding contributors for {doi_record['DOI']}")
         add_contributors(orcid_record, doi_record)
-        logging.error(
-            f"Added contributors for {doi_record['DOI']} Record {orcid_record}")
 
         # Add publication date
-        logging.error(
-            f"Adding pub date for {doi_record['DOI']} Record {orcid_record}")
         add_pub_date(orcid_record, doi_record)
-        logging.error(
-            f"Added pub date for {doi_record['DOI']} Record {orcid_record}")
 
         if return_dict:
             return orcid_record
 
         # Convert the ORCID record to JSON format
         claim_json = json.dumps(orcid_record)
-        logging.error(
-            f"Claim created for {doi_record['DOI']} Record {claim_json}")
 
         return claim_json
 
