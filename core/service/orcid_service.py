@@ -305,7 +305,7 @@ def add_contributors(record, doi_record):
             for contributor_info in doi_record[role]:
                 given_name = contributor_info.get("given", "").strip()
                 family_name = contributor_info.get("family", "").strip()
-                credit_name = f"{family_name}, {given_name}".strip(', ')
+                credit_name = f"{given_name} {family_name}".strip()
                 orcid_id = ""
 
                 if not credit_name:

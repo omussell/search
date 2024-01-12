@@ -295,9 +295,9 @@ def test_add_contributors_with_author_and_editor():
     }
     add_contributors(record, doi_record)
     assert len(record["contributors"]["contributor"]) == 2
-    assert record["contributors"]["contributor"][0]["credit-name"]["value"] == "Doe, John"
+    assert record["contributors"]["contributor"][0]["credit-name"]["value"] == "John Doe"
     assert record["contributors"]["contributor"][0]["contributor-attributes"]["contributor-role"] == "author"
-    assert record["contributors"]["contributor"][1]["credit-name"]["value"] == "Smith, Jane"
+    assert record["contributors"]["contributor"][1]["credit-name"]["value"] == "Jane Smith"
     assert record["contributors"]["contributor"][1]["contributor-attributes"]["contributor-role"] == "editor"
 
 
@@ -306,7 +306,7 @@ def test_add_contributors_with_only_author():
     doi_record = {"author": [{"given": "John", "family": "Doe"}]}
     add_contributors(record, doi_record)
     assert len(record["contributors"]["contributor"]) == 1
-    assert record["contributors"]["contributor"][0]["credit-name"]["value"] == "Doe, John"
+    assert record["contributors"]["contributor"][0]["credit-name"]["value"] == "John Doe"
     assert record["contributors"]["contributor"][0]["contributor-attributes"]["contributor-role"] == "author"
 
 
@@ -315,7 +315,7 @@ def test_add_contributors_with_only_editor():
     doi_record = {"editor": [{"given": "Jane", "family": "Smith"}]}
     add_contributors(record, doi_record)
     assert len(record["contributors"]["contributor"]) == 1
-    assert record["contributors"]["contributor"][0]["credit-name"]["value"] == "Smith, Jane"
+    assert record["contributors"]["contributor"][0]["credit-name"]["value"] == "Jane Smith"
     assert record["contributors"]["contributor"][0]["contributor-attributes"]["contributor-role"] == "editor"
 
 
@@ -353,7 +353,7 @@ def test_add_contributors_with_partial_information():
         },
         [
             {
-                "credit-name": {"value": "Doe, John"},
+                "credit-name": {"value": "John Doe"},
                 "contributor-attributes": {"contributor-role": "author"},
                 "contributor-orcid": {
                     "uri": "https://orcid.org/0000-0002-1014-621X",
@@ -362,7 +362,7 @@ def test_add_contributors_with_partial_information():
                 }
             },
             {
-                "credit-name": {"value": "Smith, Jane"},
+                "credit-name": {"value": "Jane Smith"},
                 "contributor-attributes": {"contributor-role": "author"}
             }
         ]
