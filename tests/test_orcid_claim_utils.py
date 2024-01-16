@@ -524,7 +524,7 @@ def test_add_pub_date(print_date, online_date, expected_year, expected_month, ex
 @pytest.mark.parametrize("internal_type, expected_orcid_type", [
     ('journal-article', 'journal-article'),
     ('proceedings-article', 'conference-paper'),
-    ('dissertation', 'dissertation'),
+    ('dissertation', 'dissertation-thesis'),
     ('report', 'report'),
     ('standards-and-policy', 'standards-and-policy'),
     ('dataset', 'data-set'),
