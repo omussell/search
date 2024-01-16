@@ -21,7 +21,6 @@ def orcid_work_type(internal_work_type):
         'book': 'book',
         'journal': 'journal-issue',
         'book-chapter': 'book-chapter',
-        'dissertation': 'dissertation',
         'edited-book': 'edited-book',
         'report': 'report',
         'peer-review': 'review',
