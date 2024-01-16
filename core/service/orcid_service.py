@@ -14,7 +14,7 @@ def orcid_work_type(internal_work_type):
     mapping = {
         'journal-article': 'journal-article',
         'proceedings-article': 'conference-paper',
-        'dissertation': 'dissertation',
+        'dissertation': 'dissertation-thesis',
         'report': 'report',
         'standards-and-policy': 'standards-and-policy',
         'dataset': 'data-set',
