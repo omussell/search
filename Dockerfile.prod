@@ -7,4 +7,4 @@ RUN pip3 install --no-cache-dir -r requirements.txt
 
 COPY . /app
 
-CMD [ "gunicorn", "--bind", "0.0.0.0:8000", "--workers=10", "app:app" ]
+CMD [ "gunicorn", "--bind", "0.0.0.0:8000", "--workers=10", "--max-requests=1000", "--max-requests-jitter=20", "--keep-alive=75", "app:app" ]
