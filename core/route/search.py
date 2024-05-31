@@ -92,6 +92,17 @@ def works_help():
 def dois():
     return Response(response="Bad Request", status=400,  mimetype="text/plain")
 
+@home.route("/robots.txt")
+def robots_txt():
+    robots_response = """User-agent: *
+Disallow: /
+Allow: /$
+Allow: /funding
+Allow: /help/works
+Crawl-delay: 3600
+"""
+    return Response(robots_response, mimetype='text/plain')
+    
 def splash():
     page = {"name": constants.CATEGORY_WORKS}
     return render_template("splash.html", page=page)
