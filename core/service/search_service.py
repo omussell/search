@@ -143,7 +143,7 @@ def add_doi(item, row):
         doi = item["DOI"]
         row["doi"] = doi
 
-        if doi.startswith(("10.5555/", "10.55555/")):
+        if doi.startswith(("10.5555/", "10.32013/", "10.50505/")):
             row["test_doi"] = True
         else:
             row["test_doi"] = False
