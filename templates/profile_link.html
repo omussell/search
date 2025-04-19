@@ -1,7 +1,8 @@
 {% if signed_in %}
   <div class="dropdown">
     <a class="dropdown-toggle" data-toggle="dropdown" href="#" role="button">
-      <img src="{{ url_for('static', filename='img/orcid_24x24.gif') }}"/>
+      <!--<img src="{{ url_for('static', filename='img/orcid_24x24.gif') }}"/>-->
+      <img src="https://search-cdn.staging.crossref.org/static/img/orcid_24x24.gif"/>
       {{ orcid_info.user_name }}
       <b class="caret"></b>
     </a>
@@ -23,7 +24,7 @@
   </div>
 {% else %}
   <a class="sign-in-link" href="#">
-    <img src="{{ url_for('static', filename='img/orcid_24x24.gif') }}"/>
+    <img src="https://search-cdn.staging.crossref.org/static/img/orcid_24x24.gif"/>
     Sign in
   </a>
   <script>
