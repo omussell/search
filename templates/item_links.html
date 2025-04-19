@@ -41,7 +41,8 @@
     </span>
     {% if signed_in %}
         <span class="well-transparent claim-ok" id="{{ item.doi }}"  style = "visibility:hidden">
-          <img src="{{ url_for('static', filename='img/orcid_16x16.gif') }}"/>
+          <!--<img src="{{ url_for('static', filename='img/orcid_16x16.gif') }}"/>-->
+          <img src="https://search-cdn.production.crossref.org/static/img/orcid_16x16.gif"/>
           <span>In your profile</span>
         </span>
     {% endif %}

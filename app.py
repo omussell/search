@@ -22,7 +22,7 @@ csrf = CSRFProtect(app)
 
 app.config["CORS_HEADERS"] = "Content-Type"
 cors_config = {
-  "origins": ["https://assets.crossref.org"],
+    "origins": ["https://assets.crossref.org", "https://search-cdn.production.crossref.org"],
 }
 CORS(app, resources={r"/*": cors_config})
 

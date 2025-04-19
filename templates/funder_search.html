@@ -1,6 +1,7 @@
 {% extends "search.html" %}
 {% block search_content %}
-<script src="{{ url_for('static', filename='js/funders_search.js') }}" type="text/javascript"></script>
+<!--<script src="{{ url_for('static', filename='js/funders_search.js') }}" type="text/javascript"></script>-->
+<script src="https://search-cdn.production.crossref.org/static/js/funders_search.js" type="text/javascript"></script>
 <div class="proxy-form" style = 'display: none;'>
     <form id="fundref-form" method = 'GET' action = "/search/funders">
         <input id="fundref-input" name='id'/>
