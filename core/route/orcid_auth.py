@@ -4,6 +4,8 @@ import time
 
 import requests
 from core.service.orcid_service import create_orcid_claim_json, extract_orcid_dois
+from core.ip_utils import get_client_ip
+from core.utils import prepare_api_headers
 from flask import Blueprint, abort, redirect, render_template, request
 from oauthlib.oauth2 import WebApplicationClient
 from core.utils import get_request_data
@@ -87,6 +89,7 @@ def claim():
     """
     status = None
     signed_in, orcid_info, session_expired = utils.signed_in_info()
+    client_ip = get_client_ip(request)
 
     if signed_in and "doi" in request.args:
         doi = request.args["doi"]
@@ -110,7 +113,7 @@ def claim():
                 url = constants.WORKS_API_URL + "/" + doi
                 try:
                     res = requests.get(
-                        url, timeout=constants.REQUEST_TIME_OUT, headers=API_HEADERS)
+                        url, timeout=constants.REQUEST_TIME_OUT, headers=prepare_api_headers(client_ip))
 
                 except Exception as e:
                     logging.exception(
@@ -123,7 +126,7 @@ def claim():
                     if response_json["message"]:
                         doi_record = response_json["message"]
                     if doi_record:
-                        json_record = create_orcid_claim_json(doi_record)
+                        json_record = create_orcid_claim_json(doi_record, client_ip=client_ip)
 
                     # Attempt the submission to Orcid
                     try:

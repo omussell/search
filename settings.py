@@ -27,4 +27,8 @@ API_USER_AGENT_NAME = os.environ.get("API_USER_AGENT_NAME", "CrossrefSearch")
 API_USER_AGENT = f"{API_USER_AGENT_NAME}/{APP_VERSION}; mailto:{API_MAILTO}"
 API_HEADERS = {"User-Agent": API_USER_AGENT}
 
+# Pass through X-Forwarded-For header to Crossref API for rate limiting
+FORWARD_CLIENT_IP = os.environ.get("FORWARD_CLIENT_IP", "true").lower() == "true"
+
 logger.error(f"API_USER_AGENT is set to {API_USER_AGENT}")
+logger.error(f"FORWARD_CLIENT_IP is set to {FORWARD_CLIENT_IP}")
