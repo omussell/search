@@ -24,7 +24,7 @@ unit_test:
         - results.xml
 
 
-release:
+release: 
   image: public.ecr.aws/crossref/cicada:latest
   stage: release
   tags:
