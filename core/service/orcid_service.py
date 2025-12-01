@@ -3,7 +3,7 @@ import logging
 import requests
 from core import exceptions
 from core.constants import WORKS_API_URL, WORK_TYPES_ISBN_AS_CONTAINER, WORK_TYPES_ISSN_AS_CONTAINER
-from core.utils import DOIRecordParser, get_app_config
+from core.utils import DOIRecordParser, get_app_config, prepare_api_headers
 from datetime import datetime
 
 from settings import API_HEADERS
@@ -131,10 +131,10 @@ def add_pub_date(record, doi_record):
     return record
 
 
-def fetch_citation_bibtex(doi):
+def fetch_citation_bibtex(doi, client_ip=None):
     # Fetch citation data in BibTeX format
     url = f"{WORKS_API_URL}/{doi}/transform?mailto={get_app_config('API_MAILTO')}"
-    headers = {**API_HEADERS, **{'Accept': 'application/x-bibtex'}}
+    headers = {**prepare_api_headers(client_ip), **{'Accept': 'application/x-bibtex'}}
     response = requests.get(url,
                             headers=headers)
 
@@ -402,10 +402,11 @@ def add_work_type(record, doi_record):
     return record
 
 
-def create_orcid_claim_json(doi_record, return_dict=False):
+def create_orcid_claim_json(doi_record, return_dict=False, client_ip=None):
     """
     Convert doi record to Orcid json record to claim.
     :param doi_record: doi record.
+    :param client_ip: client IP address for X-Forwarded-For header (optional).
     :return: ORCID record in JSON format, or None if an error occurs.
     """
     try:
@@ -414,7 +415,7 @@ def create_orcid_claim_json(doi_record, return_dict=False):
         orcid_record = {}
         add_work_type(orcid_record, doi_record)
         # Fetch and add citation
-        citation_bibtex = fetch_citation_bibtex(doi_record['DOI'])
+        citation_bibtex = fetch_citation_bibtex(doi_record['DOI'], client_ip)
         if citation_bibtex:
             orcid_record['citation'] = {
                 'citation-type': 'bibtex',

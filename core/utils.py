@@ -12,6 +12,25 @@ BASE_ROOT = None
 HOST_URL = None
 
 
+def prepare_api_headers(request_or_ip=None):
+    """Return API headers with X-Forwarded-For from request if enabled."""
+    from settings import API_HEADERS, FORWARD_CLIENT_IP
+    
+    headers = API_HEADERS.copy()
+    
+    if not FORWARD_CLIENT_IP or not request_or_ip:
+        return headers
+    
+    if isinstance(request_or_ip, str):
+        headers['X-Forwarded-For'] = request_or_ip
+    elif hasattr(request_or_ip, 'headers'):
+        xff = request_or_ip.headers.get('X-Forwarded-For')
+        if xff:
+            headers['X-Forwarded-For'] = xff
+    
+    return headers
+
+
 def get_doi_url(doi):
     return "https://doi.org/" + doi
 
