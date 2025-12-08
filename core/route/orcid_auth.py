@@ -23,10 +23,10 @@ def orcid_redirect():
     """Signin to orcid. Redirects to orcid site.
     :return:
     """
-    utils.set_host_url(request.host_url)
+    host_url = utils.get_secure_host_url(request)
     client = WebApplicationClient(utils.get_app_config("ORCID_CLIENT_ID"))
     url = client.prepare_request_uri(utils.get_app_config("ORCID_AUTHORIZE_URL"),
-                                     redirect_uri=utils.get_host_url() + constants.ORCID_REDIRECT_URL,
+                                     redirect_uri=host_url + constants.ORCID_REDIRECT_URL,
                                      scope="/read-limited /activities/update")
     return redirect(url)
 
@@ -37,7 +37,7 @@ def orcid_callback():
     """Callback for orcid signin.
     :return:
     """
-    utils.set_host_url(request.host_url)
+    host_url = utils.get_secure_host_url(request)
     if "code" in request.args:
         headers = {
             "Accept": "application/json",
@@ -45,9 +45,9 @@ def orcid_callback():
         }
 
         if request.path == '/auth/orcid/search-and-link':
-            redirect_uri = utils.get_host_url() + constants.ORCID_SEARCH_AND_LINK_REDIRECT_URL
+            redirect_uri = host_url + constants.ORCID_SEARCH_AND_LINK_REDIRECT_URL
         else:
-            redirect_uri = utils.get_host_url() + constants.ORCID_REDIRECT_URL
+            redirect_uri = host_url + constants.ORCID_REDIRECT_URL
 
         data = "client_id=" + utils.get_app_config("ORCID_CLIENT_ID") + \
                "&client_secret=" + utils.get_app_config("ORCID_CLIENT_SECRET") + \
