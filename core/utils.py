@@ -87,6 +87,31 @@ def set_host_url(host_url):
 def get_host_url():
     return HOST_URL
 
+
+def get_secure_host_url(request_obj=None):
+    """Get host URL with correct scheme for ORCID OAuth redirects."""
+    import os
+    from flask import request
+    req = request_obj or request
+    
+    host = req.host or req.headers.get('Host', '')
+    forwarded_proto = req.headers.get('X-Forwarded-Proto', '').lower()
+    scheme = getattr(req, 'scheme', None)
+    
+    if forwarded_proto == 'https' or scheme == 'https':
+        scheme = 'https'
+    elif os.environ.get('ENV') == 'production':
+        scheme = 'https'
+    elif os.environ.get('FORCE_HTTPS', '').lower() == 'true':
+        scheme = 'https'
+    elif forwarded_proto == 'http' or scheme == 'http':
+        scheme = 'http'
+    else:
+        host_url = req.host_url
+        return host_url if host_url else f"http://{host}/"
+    
+    return f"{scheme}://{host}/"
+
 def get_request_data():
     if request.is_json:
         return request.json
