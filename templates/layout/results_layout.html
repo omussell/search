@@ -4,8 +4,7 @@
 {% endblock %}
 
 {% block styles %}
-<!--<link href="{{ url_for('static', filename='css/results.css') }}" media="screen" rel="stylesheet" type="text/css" >-->
-<link href="https://search-cdn.production.crossref.org/static/css/results.css" media="screen" rel="stylesheet" type="text/css" >
+<link href="{{ static_url('css/results.css') }}" media="screen" rel="stylesheet" type="text/css" >
 {% endblock styles %}
 
 {% block content %}

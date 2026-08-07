@@ -7,6 +7,11 @@ SESSION_LIFETIME = 3600*24*30
 
 BASE_API_URL = os.environ.get("BASE_API_URL", "https://api.crossref.org/")
 
+# Use the CDN in production only. Locally, serve assets from this app — the CDN
+# won't have hashes computed from a local checkout.
+_default_static_cdn_base_url = "https://search-cdn.production.crossref.org" if os.environ.get("ENV") == "production" else ""
+STATIC_CDN_BASE_URL = os.environ.get("STATIC_CDN_BASE_URL", _default_static_cdn_base_url)
+
 ORCID_CLIENT_ID = os.environ.get("ORCID_CLIENT_ID", "invalid")
 ORCID_CLIENT_SECRET = os.environ.get("ORCID_CLIENT_SECRET", "invalid")
 
