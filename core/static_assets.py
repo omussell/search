@@ -29,16 +29,16 @@ def _file_digest(absolute_path):
         return hashlib.sha256(f.read()).hexdigest()[:HASH_LENGTH]
 
 
-def _hashed_filename(relavite_path, digest):
+def _hashed_filename(relative_path, digest):
     """1.e Build a hashed filename (insert digest before the extension)."""
-    base, ext = os.path.splitext(relavite_path)
+    base, ext = os.path.splitext(relative_path)
     return f"{base}.{digest}{ext}"
 
 
-def _register_static_file(relavite_path, hashed_relative_path):
+def _register_static_file(relative_path, hashed_relative_path):
     """1.f Register both mapping directions (original <-> hashed)."""
-    _manifest[relavite_path] = hashed_relative_path
-    _reverse_manifest[hashed_relative_path] = relavite_path
+    _manifest[relative_path] = hashed_relative_path
+    _reverse_manifest[hashed_relative_path] = relative_path
 
 
 def build_static_manifest(static_folder):
@@ -58,10 +58,10 @@ def build_static_manifest(static_folder):
     for root, _dirs, files in os.walk(static_folder):
         for name in files:
             absolute_path = os.path.join(root, name)
-            relavite_path = _relative_static_path(absolute_path, static_folder)  # 1.c
+            relative_path = _relative_static_path(absolute_path, static_folder)  # 1.c
             digest = _file_digest(absolute_path)  # 1.d
-            hashed_relative_path = _hashed_filename(relavite_path, digest)  # 1.e
-            _register_static_file(relavite_path, hashed_relative_path)  # 1.f
+            hashed_relative_path = _hashed_filename(relative_path, digest)  # 1.e
+            _register_static_file(relative_path, hashed_relative_path)  # 1.f
     return _manifest
 
 
