@@ -78,3 +78,17 @@ def static_url(filename):
 def resolve_hashed_filename(requested_filename):
     """3.a Look up real filename on disk from a hashed URL path."""
     return _reverse_manifest.get(requested_filename)
+
+
+def strip_content_hash(requested_filename):
+    """If path looks like name.<hash>.ext, return name.ext; otherwise None."""
+    base, ext = os.path.splitext(requested_filename)
+    hash_suffix_len = HASH_LENGTH + 1  # "." + hash
+    if len(base) <= hash_suffix_len or base[-hash_suffix_len] != ".":
+        return None
+    maybe_content_hash = base[-HASH_LENGTH:]
+    if len(maybe_content_hash) != HASH_LENGTH or any(
+        c not in "0123456789abcdef" for c in maybe_content_hash
+    ):
+        return None
+    return f"{base[:-hash_suffix_len]}{ext}"

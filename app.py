@@ -45,14 +45,30 @@ app.jinja_env.globals["static_url"] = static_assets.static_url
 
 
 def _serve_static(filename):
+    """Serve static files by their real on-disk name.
+
+    Cases:
+    1. Known hash in the reverse map -> original file + long cache (1 year).
+    2. Old/unknown hash (e.g. rolling deploy) -> strip digest, short cache.
+    3. Plain name (e.g. fonts from CSS url(...)) -> serve as-is, short cache.
+    """
+    # Case 1: known hashed URL
     original = static_assets.resolve_hashed_filename(filename)
-    if original is None:
-        return send_from_directory(app.static_folder, filename)
-    response = send_from_directory(app.static_folder, original)
+    if original is not None:
+        response = send_from_directory(app.static_folder, original)
+        response.cache_control.no_cache = None
+        response.cache_control.public = True
+        response.cache_control.max_age = 31536000
+        response.cache_control.immutable = True
+        return response
+
+    # Case 2: old/unknown hash -> strip to original name
+    # Case 3: plain name -> strip_content_hash returns None, keep filename
+    fallback = static_assets.strip_content_hash(filename) or filename
+    response = send_from_directory(app.static_folder, fallback)
     response.cache_control.no_cache = None
     response.cache_control.public = True
-    response.cache_control.max_age = 31536000
-    response.cache_control.immutable = True
+    response.cache_control.max_age = 3600
     return response
 
 
