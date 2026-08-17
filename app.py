@@ -1,13 +1,13 @@
 import logging.handlers
 import os
 
-from flask import Flask, flash, render_template, request
+from flask import Flask, flash, render_template, request, send_from_directory
 from flask_cors import CORS
 from flask_wtf.csrf import CSRFProtect
 from werkzeug.middleware.proxy_fix import ProxyFix
 
 import settings
-from core import constants, utils
+from core import constants, static_assets, utils
 from core.route import blueprints
 from core.utils import get_request_data
 
@@ -37,6 +37,42 @@ app.config["SESSION_COOKIE_HTTPONLY"] = True
 app.config["PERMANENT_SESSION_LIFETIME"] = utils.get_app_config("SESSION_LIFETIME")
 
 blueprints.register_blueprints(app)
+
+# Fingerprint static files so we can serve them with long-lived cache headers.
+# Hashed names come from the manifest; content changes produce a new filename.
+static_assets.build_static_manifest(app.static_folder)
+app.jinja_env.globals["static_url"] = static_assets.static_url
+
+
+def _serve_static(filename):
+    """Serve static files by their real on-disk name.
+
+    Cases:
+    1. Known hash in the reverse map -> original file + long cache (1 year).
+    2. Old/unknown hash (e.g. rolling deploy) -> strip digest, short cache.
+    3. Plain name (e.g. fonts from CSS url(...)) -> serve as-is, short cache.
+    """
+    # Case 1: known hashed URL
+    original = static_assets.resolve_hashed_filename(filename)
+    if original is not None:
+        response = send_from_directory(app.static_folder, original)
+        response.cache_control.no_cache = None
+        response.cache_control.public = True
+        response.cache_control.max_age = 31536000
+        response.cache_control.immutable = True
+        return response
+
+    # Case 2: old/unknown hash -> strip to original name
+    # Case 3: plain name -> strip_content_hash returns None, keep filename
+    fallback = static_assets.strip_content_hash(filename) or filename
+    response = send_from_directory(app.static_folder, fallback)
+    response.cache_control.no_cache = None
+    response.cache_control.public = True
+    response.cache_control.max_age = 3600
+    return response
+
+
+app.view_functions["static"] = _serve_static
 
 
 # Logger configuration

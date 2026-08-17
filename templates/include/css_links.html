@@ -1,22 +1,11 @@
-    <!--
-    <link href="{{ url_for('static', filename='css/bootstrap.min.css') }}" media="screen" rel="stylesheet"
+    <link href="{{ static_url('css/bootstrap.min.css') }}" media="screen" rel="stylesheet"
               type="text/css"></link>
-    <link href="{{ url_for('static', filename='css/font-awesome.min.css') }}" media="screen" rel="stylesheet"
+    <link href="{{ static_url('css/font-awesome.min.css') }}" media="screen" rel="stylesheet"
           type="text/css"></link>
-    <link href="{{ url_for('static', filename='css/font.css') }}" rel="stylesheet" type="text/css"></link>
-    <link href="{{ url_for('static', filename='css/typeahead.css') }}" media="screen" rel="stylesheet"
+    <link href="{{ static_url('css/font.css') }}" rel="stylesheet" type="text/css"></link>
+    <link href="{{ static_url('css/typeahead.css') }}" media="screen" rel="stylesheet"
           type="text/css"></link>
-    <link href="{{ url_for('static', filename='js/opensearch.xml') }}" rel="search" title="Crossref Metadata Search"
-          type="application/opensearchdescription+xml"></link>
-    -->
-    <link href="https://search-cdn.production.crossref.org/static/css/bootstrap.min.css" media="screen" rel="stylesheet"
-              type="text/css"></link>
-    <link href="https://search-cdn.production.crossref.org/static/css/font-awesome.min.css" media="screen" rel="stylesheet"
-          type="text/css"></link>
-    <link href="https://search-cdn.production.crossref.org/static/css/font.css" rel="stylesheet" type="text/css"></link>
-    <link href="https://search-cdn.production.crossref.org/static/css/typeahead.css" media="screen" rel="stylesheet"
-          type="text/css"></link>
-    <link href="https://search-cdn.production.crossref.org/static/js/opensearch.xml" rel="search" title="Crossref Metadata Search"
+    <link href="{{ static_url('js/opensearch.xml') }}" rel="search" title="Crossref Metadata Search"
           type="application/opensearchdescription+xml"></link>
 
     <link rel="apple-touch-icon" sizes="57x57" href="https://assets.crossref.org/favicon/apple-touch-icon-57x57.png">
@@ -48,10 +37,5 @@
 
     <link rel="preconnect" href="https://rsms.me/">
     <link rel="stylesheet" href="https://rsms.me/inter/inter.css">
-    <!--
-    <link href="{{ url_for('static', filename='css/cookies.css') }}" media="screen" rel="stylesheet" type="text/css" ></link>
-    <link href="{{ url_for('static', filename='css/base.css') }}" media="screen" rel="stylesheet" type="text/css" ></link>
-    -->
-
-    <link href="https://search-cdn.production.crossref.org/static/css/cookies.css" media="screen" rel="stylesheet" type="text/css" ></link>
-    <link href="https://search-cdn.production.crossref.org/static/css/base.css" media="screen" rel="stylesheet" type="text/css" ></link>
+    <link href="{{ static_url('css/cookies.css') }}" media="screen" rel="stylesheet" type="text/css" ></link>
+    <link href="{{ static_url('css/base.css') }}" media="screen" rel="stylesheet" type="text/css" ></link>
